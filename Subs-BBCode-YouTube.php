@@ -19,7 +19,8 @@ function BBCode_YouTube_Settings(&$config_vars)
 {
 	$config_vars[] = array('int', 'youtube_default_width');
 	$config_vars[] = array('int', 'youtube_default_height');
-	$config_vars[] = array('check', 'youtube_sig_embed');
+	$config_vars[] = array('check', 'youtube_no_embed');
+	$config_vars[] = array('check', 'youtube_disable_autoembed');
 }
 
 function BBCode_YouTube_LoadTheme()
@@ -404,7 +405,7 @@ function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 		$modSettings['disabledBBC'] = (!empty($modSettings['disabledBBC']) ? $modSettings['disabledBBC'] . ',' : '') . 'youtube,yt,yt_search,yt_user';
 
 	// Is message empty, OR autoembedding links disabled?  If so, return to caller:
-	if ($message === false || !empty($context['bbc_youtube']['ignore']))
+	if ($message === false || !empty($context['bbc_youtube']['ignore']) || !empty($modSettings['youtube_disable_autoembed']))
 		return;
 	$replace = (strpos($cache_id, 'sig') !== false ? '[url]$0[/url]' : '[youtube]$0[/youtube]');
 	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';

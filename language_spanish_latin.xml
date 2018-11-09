@@ -2,7 +2,7 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:BBCode_youtube</id>
-<version>4.10</version>
+<version>4.11</version>
 
 <file name="$languagedir/index.spanish_latin.php" error="skip">
 	<operation>
@@ -13,6 +13,8 @@ $txt['yt_search'] = 'Buscador de YouTube';
 $txt['yt_user'] = 'Usuario de YouTube';
 $txt['youtube_link_invalid'] = '[ V&iacute;nculo no v&aacute;lido de YouTube ]';
 $txt['youtube_no_embed'] = 'Mostrar v&iacute;deos de YouTube como un enlace.';
+//$txt['youtube_sig_embed'] = 'Allow YouTube videos in signatures?';
+//$txt['youtube_disable_autoembed'] = 'Disable YouTube autoembed?';
 ]]></add>
 	</operation>
 </file>
@@ -33,6 +35,8 @@ $txt['yt_search'] = 'Buscador de YouTube';
 $txt['yt_user'] = 'Usuario de YouTube';
 $txt['youtube_link_invalid'] = '[ Vínculo no válido de YouTube ]';
 $txt['youtube_no_embed'] = 'Mostrar vídeos de YouTube como un enlace.';
+//$txt['youtube_sig_embed'] = 'Allow YouTube videos in signatures?';
+//$txt['youtube_disable_autoembed'] = 'Disable YouTube autoembed?';
 ]]></add>
 	</operation>
 </file>

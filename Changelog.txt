@@ -1,3 +1,7 @@
+v4.11 - March 8th, 2018
+o Added missing option to disable YouTube bbcodes in signatures.
+o Added new option to disable autoembedding for YouTube links.
+
 v4.10 - March 4th, 2018
 o Fixed issue where BBC manager didn't show any tags.
 
