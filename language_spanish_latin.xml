@@ -2,13 +2,15 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:BBCode_youtube</id>
-<version>3.11</version>
+<version>4.0</version>
 
 <file name="$languagedir/index.spanish_latin.php" error="skip"
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
-$txt['youtube'] = "Youtube";
+$txt['youtube'] = 'Youtube';
+$txt['yt_search'] = 'YouTube Search';
+$txt['yt_user'] = 'YouTube User';
 $txt['youtube_link_invalid'] = '[ V&iacute;nculo no v&aacute;lido YouTube ]';
 $txt['youtube_no_embed'] = 'Mostrar v&iacute;deos de YouTube como un enlace.';
 ]]></add>
@@ -26,7 +28,9 @@ $txt['youtube_default_height'] = ''El alto predeterminado utilizado para YouTube
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
-$txt['youtube'] = "Youtube";
+$txt['youtube'] = 'Youtube';
+$txt['yt_search'] = 'YouTube Search';
+$txt['yt_user'] = 'YouTube User';
 $txt['youtube_link_invalid'] = '[ Vínculo no válido YouTube ]';
 $txt['youtube_no_embed'] = 'Mostrar vídeos de YouTube como un enlace.';
 ]]></add>

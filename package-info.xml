@@ -5,7 +5,7 @@
 	<id>Dougiefresh:YouTube</id>
 	<name>Yet Another YouTube BBCode Tag</name>
 	<type>modification</type>
-	<version>3.11</version>
+	<version>4.0</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
@@ -17,6 +17,8 @@
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
 		<require-file name="BBCode-YouTube2.css" destination="$themedir/css" />
 		<require-file name="youtube.gif" destination="$imagesdir/bbc" />
+		<require-file name="yt_search.gif" destination="$imagesdir/bbc" />
+		<require-file name="yt_user.gif" destination="$imagesdir/bbc" />
 	</install>
 	<uninstall for="2.0 - 2.0.99">
 		<code>add_remove_hooks.php</code>
@@ -27,6 +29,8 @@
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
 		<remove-file name="$themedir/css/BBCode-YouTube2.css" />
 		<remove-file name="$imagesdir/bbc/youtube.gif" />
+		<remove-file name="$imagesdir/bbc/yt_search.gif" />
+		<remove-file name="$imagesdir/bbc/yt_user.gif" />
 	</uninstall>
 
 	<install for="2.1 Beta 2">
@@ -38,6 +42,8 @@
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
 		<require-file name="BBCode-YouTube2.css" destination="$themedir/css" />
 		<require-file name="youtube.png" destination="$imagesdir/bbc" />
+		<require-file name="yt_search.png" destination="$imagesdir/bbc" />
+		<require-file name="yt_user.png" destination="$imagesdir/bbc" />
 	</install>
 	<uninstall for="2.1 Beta 2">
 		<code>add_remove_hooks.php</code>
@@ -47,5 +53,7 @@
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
 		<remove-file name="$themedir/css/BBCode-YouTube2.css" />
 		<remove-file name="$imagesdir/bbc/youtube.png" />
+		<remove-file name="$imagesdir/bbc/yt_search.png" />
+		<remove-file name="$imagesdir/bbc/yt_user.png" />
 	</uninstall>
 </package-info>

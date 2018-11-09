@@ -1,3 +1,7 @@
+v4.0 - September 14th, 2016
+o Added buttons for the [b]yt_user[/b] and [b]yt_search[/b] bbcodes.
+o Added minute:second validation to [b]start[/b] and [b]end[/b] parameters.
+
 v3.11 - April 7th, 2016
 o Added Spanish Latin translation by [url=http://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee [BC][/url].
 

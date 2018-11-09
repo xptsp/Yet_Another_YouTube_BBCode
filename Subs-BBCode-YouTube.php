@@ -139,6 +139,20 @@ function BBCode_YouTube_Button(&$buttons)
 		'before' => '[youtube]',
 		'after' => '[/youtube]',
 	);
+	$buttons[count($buttons) - 1][] = array(
+		'image' => 'yt_search',
+		'code' => 'yt_search',
+		'description' => $txt['yt_search'],
+		'before' => '[yt_search]',
+		'after' => '[/yt_search]',
+	);
+	$buttons[count($buttons) - 1][] = array(
+		'image' => 'yt_user',
+		'code' => 'yt_user',
+		'description' => $txt['yt_user'],
+		'before' => '[yt_user]',
+		'after' => '[/yt_user]',
+	);
 }
 
 //=================================================================================
@@ -185,7 +199,10 @@ function BBCode_YouTube_start($start)
 	global $context;
 	$minutes = 0;
 	if (strpos($start, ':'))
+	{
 		list($minutes, $start) = explode(':', $start);
+		$start = max(0, min(59, $start));
+	}
 	$context['bbc_youtube']['start'] = ($minutes * 60) + $start;
 }
 
@@ -194,7 +211,10 @@ function BBCode_YouTube_end($end)
 	global $context;
 	$minutes = 0;
 	if (strpos($end, ':'))
+	{
 		list($minutes, $end) = explode(':', $end);
+		$end = max(0, min(59, $end));
+	}
 	$context['bbc_youtube']['end'] = ($minutes * 60) + $end;
 }
 
