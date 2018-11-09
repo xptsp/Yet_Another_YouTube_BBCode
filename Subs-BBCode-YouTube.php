@@ -403,8 +403,8 @@ function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 	if (!empty($options['youtube_no_embed']))
 		$modSettings['disabledBBC'] = (!empty($modSettings['disabledBBC']) ? $modSettings['disabledBBC'] . ',' : '') . 'youtube,yt,yt_search,yt_user';
 
-	// Is autoembedding links disabled?  If so, return to caller:
-	if (!empty($context['bbc_youtube']['ignore']))
+	// Is message empty, OR autoembedding links disabled?  If so, return to caller:
+	if ($message === false || !empty($context['bbc_youtube']['ignore']))
 		return;
 	$replace = (strpos($cache_id, 'sig') !== false ? '[url]$0[/url]' : '[youtube]$0[/youtube]');
 	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
