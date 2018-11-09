@@ -15,4 +15,31 @@
 		<add><![CDATA['<img><object><embed>']]></add>
 	</operation>
 </file>
+<file name="$sourcedir/Subs.php">
+	<operation>
+		<search position="replace"><![CDATA[if ($smileys === 'print')]]></search>
+		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
+	global $options;
+	if (!empty($options['youtube_no_embed']))
+	{
+		$disabled['youtube'] = true;
+		$disabled['yt'] = true;
+	}
+
+	]]></add>
+	</operation>
+</file>
+<file name="$themedir/Profile.template.php">
+	<operation>
+		<search position="replace"><![CDATA[// Choose WYSIWYG settings?]]></search>
+		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
+	echo '
+							<li>
+								<input type="hidden" name="default_options[youtube_no_embed]" value="0" />
+								<label for="youtube_no_embed"><input type="checkbox" name="default_options[youtube_no_embed]" id="youtube_no_embed" value="1"', !empty($context['member']['options']['youtube_no_embed']) ? ' checked="checked"' : '', ' class="input_check" /> ', $txt['youtube_no_embed'], '</label>
+							</li>';
+
+	]]></add>
+	</operation>
+</file>
 </modification>

@@ -10,6 +10,7 @@
 
 function BBCode_YouTube(&$bbc)
 {
+	// Syntax: [youtube width={x} height={x}]{URL}[/youtube]
 	$bbc[] = array(
 		'tag' => 'youtube',
 		'type' => 'unparsed_content',
@@ -19,14 +20,38 @@ function BBCode_YouTube(&$bbc)
 			'height' => array('value' => ' height="$1"', 'match' => '(\d+)', 'validate' => 'BBCode_youtube_height'),
 		),
 		'validate' => 'BBCode_YouTube_Validate',
-		'disabled_content' => '($1)',
+		'disabled_content' => '$1',
 	);
+
+	// Syntax: [youtube]{URL}[/youtube]
 	$bbc[] = array(
 		'tag' => 'youtube',
 		'type' => 'unparsed_content',
 		'content' => '$1',
 		'validate' => 'BBCode_YouTube_Validate',
-		'disabled_content' => '($1)',
+		'disabled_content' => '$1',
+	);
+
+	// Syntax: [yt width={x} height={x}]{URL}[/yt]
+	$bbc[] = array(
+		'tag' => 'yt',
+		'type' => 'unparsed_content',
+		'content' => '$1',
+		'parameters' => array(
+			'width' => array('value' => ' width="$1"', 'match' => '(\d+)', 'validate' => 'BBCode_youtube_width'),
+			'height' => array('value' => ' height="$1"', 'match' => '(\d+)', 'validate' => 'BBCode_youtube_height'),
+		),
+		'validate' => 'BBCode_YouTube_Validate',
+		'disabled_content' => '$1',
+	);
+
+	// Syntax: [yt]{URL}[/yt]
+	$bbc[] = array(
+		'tag' => 'yt',
+		'type' => 'unparsed_content',
+		'content' => '$1',
+		'validate' => 'BBCode_YouTube_Validate',
+		'disabled_content' => '$1',
 	);
 }
 
@@ -36,18 +61,21 @@ function BBCode_YouTube_Validate(&$tag, &$data, &$disabled)
 
 	// Is this simply a YouTube video ID?  Add the rest of the URL to
 	if (strlen($data) == 11)
-		$url = 'http://www.youtube.com/v/' . $data;
+		$data = $url = 'http://www.youtube.com/v/' . $data;
 	else
 	{
 		// Otherwise, figure out if the URL is actually a YouTube video URL:
 		$pattern = '#^(?:https?://)?(?:www\.)?(?:youtu\.be/|youtube\.com(?:/embed/|/v/|/watch\?v=|/watch\?.+&v=))([\w-]{11})(?:.+)?$#x';
 		preg_match($pattern, $data, $matches);
-		$url = isset($matches[1]) ? 'http://www.youtube.com/v/' . $matches[1] : false;
+		if (isset($matches[1]))
+			$url = (isset($disabled['youtube']) ? $data : (strpos('ttps://', $data) ? 'https' : 'http') . '://www.youtube.com/v/' . $matches[1]);
 	}
 
 	// Do we even have a link at this point?  If not, return "link invalid":
 	if (empty($url))
 		$data = $txt['youtube_link_invalid'];
+	elseif (isset($disabled['youtube']))
+		$data = '<a href=' . str_replace('/v/', '/watch/', $url) . '>' . $data . '</a>';
 	else
 	{
 		// Build the YouTube HTML string that we're going to use:

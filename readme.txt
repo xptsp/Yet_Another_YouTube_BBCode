@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.4[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.5[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -32,6 +32,11 @@ http://www.youtube.com/?feature=player_embedded&v=fA4cphzsjn8
 [/quote]
 will display the YouTube video at [url]http://www.youtube.com/v/fA4cphzsjn8[/url].
 
+This mod also supports the [b]https[/b] form of the listed YouTube links, in case anyone is wondering.....
+
+[color=blue][b][size=12pt][u]Profile Settings[/u][/size][/b][/color]
+There is a new option under [b]Profile[/b] => [b]Look and Layout[/b] called [b]Show YouTube videos as a link[/b].  Checking this box makes the mod create links instead of embedded videos in your post.
+
 [color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
 There are no admin settings to this mod.  To disable, you must uninstall this mod.
 
@@ -40,6 +45,11 @@ This mod was tested on SMF 2.0.9, but should work on SMF 2.0 and up.
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
 [quote]
+[b][u]v1.5 - December 28th, 2014[/u][/b]
+o Added [b]yt[/b] bbcode, which uses same syntax as the [b]youtube[/b] bbcode.
+o Added option to disable the embedding of YouTube videos on a per-user basis.
+o Modified to use link provided when YouTube bbcode is disabled.
+
 [b][u]v1.4 - December 19th, 2014[/u][/b]
 o Fixed typo that resulted in errors being logged in the admin panel...
 
