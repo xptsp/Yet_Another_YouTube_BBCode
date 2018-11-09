@@ -17,7 +17,7 @@
 </file>
 <file name="$sourcedir/Subs.php">
 	<operation>
-		<search position="replace"><![CDATA[if ($smileys === 'print')]]></search>
+		<search position="after"><![CDATA[if ($smileys === 'print')]]></search>
 		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
 	global $options;
 	if (!empty($options['youtube_no_embed']))
@@ -31,7 +31,7 @@
 </file>
 <file name="$themedir/Profile.template.php">
 	<operation>
-		<search position="replace"><![CDATA[// Choose WYSIWYG settings?]]></search>
+		<search position="after"><![CDATA[// Choose WYSIWYG settings?]]></search>
 		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
 	echo '
 							<li>

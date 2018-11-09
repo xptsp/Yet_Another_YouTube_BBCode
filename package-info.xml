@@ -5,7 +5,7 @@
 	<id>Dougiefresh:YouTube</id>
 	<name>Yet Another YouTube BBCode Tag</name>
 	<type>modification</type>
-	<version>1.5</version>
+	<version>1.6</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
@@ -13,13 +13,13 @@
 		<modification>install.xml</modification>
 		<modification>language.english.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
-		<require-file name="youtube.gif" destination="$themedir/images/bbc" />
+		<require-file name="youtube.gif" destination="$imagesdir/bbc" />
 	</install>
 	<uninstall for="2.0 - 2.0.99">
 		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install.xml</modification>
 		<modification reverse="true">language.english.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
-		<remove-file name="$themedir/images/bbc/youtube.gif" />
+		<remove-file name="$imagesdir/bbc/youtube.gif" />
 	</uninstall>
 </package-info>

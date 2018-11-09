@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.5[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.6[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -40,11 +40,18 @@ There is a new option under [b]Profile[/b] => [b]Look and Layout[/b] called [b]S
 [color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
 There are no admin settings to this mod.  To disable, you must uninstall this mod.
 
+[color=blue][b][size=12pt][u]Related Discussions[/u][/size][/b][/color]
+o [url=http://www.simplemachines.org/community/index.php?topic=522345.msg3695157#msg3695157] Adding option to stop mod from displaying YouTube video's as a video[/url]
+o [url=http://stackoverflow.com/questions/7693218/youtube-i-d-parsing-for-new-url-formats]Youtube I.D parsing for new URL formats[/url]
+
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
 This mod was tested on SMF 2.0.9, but should work on SMF 2.0 and up.
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
 [quote]
+[b][u]v1.6 - December 29th, 2014[/u][/b]
+o Fixed image install locations within [b]package-info.xml[/b].
+
 [b][u]v1.5 - December 28th, 2014[/u][/b]
 o Added [b]yt[/b] bbcode, which uses same syntax as the [b]youtube[/b] bbcode.
 o Added option to disable the embedding of YouTube videos on a per-user basis.
