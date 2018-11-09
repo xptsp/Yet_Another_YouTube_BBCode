@@ -399,6 +399,9 @@ function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 //=================================================================================
 function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 {
+	global $context;
+	if (!empty($context['bbc_youtube']['ignore']))
+		return;
 	$replace = (strpos($cache_id, 'sig') !== false ? '[url]$0[/url]' : '[youtube]$0[/youtube]');
 	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, $replace, $message);

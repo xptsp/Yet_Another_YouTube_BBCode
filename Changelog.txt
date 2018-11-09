@@ -1,3 +1,6 @@
+v4.1 - October 24th, 2016
+o Added code to SimplePortal code to skip embedding links for shoutboxes.
+
 v4.0 - September 14th, 2016
 o Added buttons for the [b]yt_user[/b] and [b]yt_search[/b] bbcodes.
 o Added minute:second validation to [b]start[/b] and [b]end[/b] parameters.

@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:YouTube</id>
 <name>Yet Another YouTube BBCode Tag</name>
-<version>4.0</version>
+<version>4.1</version>
 
 <file name="$sourcedir/Subs.php">
 	<operation>
@@ -36,6 +36,13 @@
 								<label for="youtube_no_embed"><input type="checkbox" name="default_options[youtube_no_embed]" id="youtube_no_embed" value="1"', !empty($context['member']['options']['youtube_no_embed']) ? ' checked="checked"' : '', ' class="input_check" /> ', $txt['youtube_no_embed'], '</label>
 							</li>';
 
+	]]></add>
+	</operation>
+</file>
+<file name="$sourcedir/PortalBlocks.php" error="skip">
+	<operation>
+		<search position="after"><![CDATA[$shoutbox['warning'] = parse_bbc($shoutbox['warning']);]]></search>
+		<add><![CDATA[$context['bbc_youtube']['ignore'] = true;
 	]]></add>
 	</operation>
 </file>
