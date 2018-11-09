@@ -372,4 +372,15 @@ function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 	return count($order) == 0;
 }
 
+//=================================================================================
+// Function to auto-embed YouTube URLs:
+//=================================================================================
+function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
+{
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)?(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(/|/e/|/embed/|/p/|\?list=|\&list=)([\w-]{18})+\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$message = preg_replace($pattern, '[youtube]$0[/youtube]', $message);
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)?(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(/|/v/|/e/|/embed/|\?v=|\&v=)([\w-]{11})+\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$message = preg_replace($pattern, '[youtube]$0[/youtube]', $message);
+}
+
 ?>
