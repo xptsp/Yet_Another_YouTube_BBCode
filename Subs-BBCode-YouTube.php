@@ -12,6 +12,9 @@
 if (!defined('SMF')) 
 	die('Hacking attempt...');
 
+//=================================================================================
+// BBCode Hook functions
+//=================================================================================
 function BBCode_YouTube_LoadTheme()
 {
 	global $context, $settings;
@@ -19,13 +22,9 @@ function BBCode_YouTube_LoadTheme()
 	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/BBCode-YouTube.css" />';
 }
 
-//=================================================================================
-// BBCode Hook functions
-//=================================================================================
-function BBCode_YouTube(&$bbc)
+function BBCode_YouTube_parameters()
 {
-	// Since all the bbcodes use the same parameters, let's define them ONCE!
-	$params = array(
+	return array(
 		'width' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_YouTube_width'),
 		'height' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_YouTube_height'),
 		'autoplay' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_YouTube_autoplay'),
@@ -38,6 +37,12 @@ function BBCode_YouTube(&$bbc)
 		'controls' => array('optional' => true, 'match' => '(0|no|off|false|hide)', 'validate' => 'BBCode_YouTube_controls'),
 		'showinfo' => array('optional' => true, 'match' => '(0|no|off|false|hide)', 'validate' => 'BBCode_YouTube_showinfo'),
 	);
+}
+
+function BBCode_YouTube(&$bbc)
+{
+	// Since all the bbcodes use the same parameters, let's define them ONCE!
+	$params = BBCode_YouTube_parameters();
 
 	// Syntax: [youtube {params}]{URL}[/youtube]
 	$bbc[] = array(
@@ -316,7 +321,7 @@ function BBCode_YouTube_Link(&$data)
 		$data = $data . (strpos($data, '?') !== false ? '&' : '?') . 'showinfo=0';
 
 	// Build the HTML string that we are going to display to the user:
-	$data = '<div' . ((empty($width) && empty($height)) ? '' : ' style="max-width: ' . $width . 'px; max-height: ' . $height . 'px;"') . '><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0"></iframe></div></div>';
+	$data = '<div' . ((empty($width) || empty($height)) ? '' : ' style="max-width: ' . $width . 'px; max-height: ' . $height . 'px;"') . '><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0"></iframe></div></div>';
 }
 
 //=================================================================================
@@ -331,6 +336,44 @@ function BBCode_YouTube_Parse($url)
 	}
 	preg_match_all('#(/|/v/|/e/|/embed/|\?v=|\&v=)([\w-]{11})#i', $url, $matches);
 	return (isset($matches[2][count($matches[2]) - 1]) ? 'embed/' . $matches[2][count($matches[2]) - 1] : false);
+}
+
+//=================================================================================
+// Function to fix parameter order of the YouTube bbcode:
+//=================================================================================
+function BBCode_YouTube_Fix_Param_Order(&$message)
+{
+	global $context;
+
+	$float_params = BBCode_YouTube_parameters();
+	$pattern = '#\[youtube (.+?)\]#i' . ($context['utf8'] ? 'u' : '');
+	preg_match_all($pattern, $message, $matches);
+	$matches = array_unique($matches[0]);
+	asort($matches);
+	foreach ($matches as $match)
+	{
+		$params = explode('|', str_replace(' ', '|', str_replace(']', ' ]', $match)));
+		unset($params[0]);
+		unset($params[count($params)]);
+		$order = array();
+		$old = '';
+		foreach ($params as $id => $param)
+		{
+			if (strpos($param, '=') === false && !empty($old))
+			{
+				$order[$old] .= ' ' . $param;
+				continue;
+			}
+			$key = explode('=', $param);
+			if (!isset($order[$key[0]]))
+				$order[$key[0]] = $key[1];
+			$old = $key[0];
+		}
+		$out = '[youtube';
+		foreach ($float_params as $key => $ignore)
+			$out .= (isset($order[$key]) ? ' ' . $key . '=' . $order[$key] : '');
+		$message = str_replace($match, $out . ']', $message);
+	}
 }
 
 ?>

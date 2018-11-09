@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:YouTube</id>
 <name>Yet Another YouTube BBCode Tag</name>
-<version>3.0</version>
+<version>3.1</version>
 
 <file name="$sourcedir/Post.php">
 	<operation error="ignore">
@@ -27,6 +27,21 @@
 	}
 
 	]]></add>
+	</operation>
+	<operation>
+		<search position="after"><![CDATA[// Shall we take the time to cache this?
+]]></search>
+		<add><![CDATA[// Setup for Yet Another YouTube BBCode
+	BBCode_YouTube_Fix_Param_Order($message);
+		
+	]]></add>
+	</operation>
+	<operation>
+		<search position="after"><![CDATA[$orders = permute($preg);]]></search>
+		<add><![CDATA[if ($possible['tag'] == 'youtube')
+					$orders = array($preg);
+				else
+					]]></add>
 	</operation>
 </file>
 <file name="$themedir/Profile.template.php">
