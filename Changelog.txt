@@ -1,3 +1,6 @@
+v4.9 - February 22nd, 2018
+o Updated Spanish Latin translation, courtsey of [url=http://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee[/url].
+
 v4.8 - February 20th, 2018
 o Removed support for SMF 2.1 Beta 2.
 o Added support for SMF 2.1 Beta 3.
