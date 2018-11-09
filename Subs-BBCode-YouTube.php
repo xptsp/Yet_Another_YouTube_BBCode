@@ -20,6 +20,7 @@ function BBCode_YouTube_LoadTheme()
 	global $context, $settings;
 	$context['html_headers'] .= '
 	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/BBCode-YouTube.css" />';
+	$context['allowed_html_tags'][] = '<iframe>';
 }
 
 function BBCode_YouTube_parameters()

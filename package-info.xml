@@ -5,12 +5,13 @@
 	<id>Dougiefresh:YouTube</id>
 	<name>Yet Another YouTube BBCode Tag</name>
 	<type>modification</type>
-	<version>3.1</version>
+	<version>3.2</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
 		<code>add_remove_hooks.php</code>
-		<modification>install.xml</modification>
+		<modification>install_20x.xml</modification>
+		<modification>install_all.xml</modification>
 		<modification>language.english.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
 		<require-file name="BBCode-YouTube.css" destination="$themedir/css" />
@@ -18,25 +19,26 @@
 	</install>
 	<uninstall for="2.0 - 2.0.99">
 		<code>add_remove_hooks.php</code>
-		<modification reverse="true">install.xml</modification>
+		<modification reverse="true">install_20x.xml</modification>
+		<modification reverse="true">install_all.xml</modification>
 		<modification reverse="true">language.english.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
 		<remove-file name="$themedir/css/BBCode-YouTube.css" />
 		<remove-file name="$imagesdir/bbc/youtube.gif" />
 	</uninstall>
 
-	<install for="2.1 Beta 1">
+	<install for="2.1 Beta 2">
 		<readme parsebbc="true">readme.txt</readme>
 		<code>add_remove_hooks.php</code>
-		<modification>install.xml</modification>
+		<modification>install_all.xml</modification>
 		<modification>language.english.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
 		<require-file name="BBCode-YouTube.css" destination="$themedir" />
 		<require-file name="youtube.png" destination="$imagesdir/bbc" />
 	</install>
-	<uninstall for="2.1 Beta 1">
+	<uninstall for="2.1 Beta 2">
 		<code>add_remove_hooks.php</code>
-		<modification reverse="true">install.xml</modification>
+		<modification reverse="true">install_all.xml</modification>
 		<modification reverse="true">language.english.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
 		<remove-file name="$themedir/css/BBCode-YouTube.css" />

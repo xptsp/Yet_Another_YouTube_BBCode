@@ -1,3 +1,7 @@
+v3.2 - August 8th, 2015
+o Removed support for SMF 2.1 Beta 1
+o Added support for SMF 2.1 Beta 2
+
 v3.1 - August 1st, 2015
 o Performance increase due to modification of parse_bbc function to deal with memory issue found.
 
