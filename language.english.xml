@@ -8,6 +8,7 @@
 	<operation>
 		<search position="replace"><![CDATA[// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></search>
 		<add><![CDATA[$txt['youtube'] = "Youtube";
+$txt['youtube_link_invalid'] = '[ Invalid YouTube link ]';
 
 // Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></add>
 	</operation>
@@ -16,6 +17,7 @@
 	<operation>
 		<search position="replace"><![CDATA[// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></search>
 		<add><![CDATA[$txt['youtube'] = "Youtube";
+$txt['youtube_link_invalid'] = '[ Invalid YouTube link ]';
 
 // Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></add>
 	</operation>

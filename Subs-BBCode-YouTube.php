@@ -13,34 +13,64 @@ function BBCode_YouTube(&$bbc)
 	$bbc[] = array(
 		'tag' => 'youtube',
 		'type' => 'unparsed_content',
-		'content' => '<object{width}{height}><param name="movie" value="$1"></param><embed src="$1" type="application/x-shockwave-flash"{width}{height}></embed></object>',
+		'content' => '$1',
 		'parameters' => array(
-			'width' => array('value' => ' width="$1"', 'match' => '(\d+)'),
-			'height' => array('value' => ' height="$1"', 'match' => '(\d+)'),
+			'width' => array('value' => ' width="$1"', 'match' => '(\d+)', validate => 'BBCode_youtube_width'),
+			'height' => array('value' => ' height="$1"', 'match' => '(\d+)', validate => 'BBCode_youtube_height'),
 		),
-		'validate' => isset($disabled['youtube']) ? null : create_function('&$tag, &$data, $disabled', '
-			$data = BBCode_YouTube_valid($data);
-		'),
+		'validate' => 'BBCode_YouTube_Validate',
 		'disabled_content' => '($1)',
 	);
 	$bbc[] = array(
 		'tag' => 'youtube',
 		'type' => 'unparsed_content',
-		'content' => '<object width="640" height="400"><param name="movie" value="$1"></param><embed src="$1" type="application/x-shockwave-flash" width="640" height="400"></embed></object>',
-		'validate' => isset($disabled['youtube']) ? null : create_function('&$tag, &$data, $disabled', '
-			$data = BBCode_YouTube_valid($data);
-		'),
+		'content' => '$1',
+		'validate' => 'BBCode_YouTube_Validate',
 		'disabled_content' => '($1)',
 	);
 }
 
-function BBCode_YouTube_valid($url) 
+function BBCode_YouTube_Validate(&$tag, &$data, &$disabled)
 {
-	if (strlen($url) == 11)
-		return 'http://www.youtube.com/v/' . $url;
-    $pattern = '#^(?:https?://)?(?:www\.)?(?:youtu\.be/|youtube\.com(?:/embed/|/v/|/watch\?v=|/watch\?.+&v=))([\w-]{11})(?:.+)?$#x';
-    preg_match($pattern, $url, $matches);
-	return (isset($matches[1])) ? 'http://www.youtube.com/v/' . $matches[1] : false;
+	global $txt, $context;
+
+	// Is this simply a YouTube video ID?  Add the rest of the URL to
+	if (strlen($data) == 11)
+		$url = 'http://www.youtube.com/v/' . $data;
+	else
+	{
+		// Otherwise, figure out if the URL is actually a YouTube video URL:
+		$pattern = '#^(?:https?://)?(?:www\.)?(?:youtu\.be/|youtube\.com(?:/embed/|/v/|/watch\?v=|/watch\?.+&v=))([\w-]{11})(?:.+)?$#x';
+		preg_match($pattern, $data, $matches);
+		$url = isset($matches[1]) ? 'http://www.youtube.com/v/' . $matches[1] : false;
+	}
+
+	// Do we even have a link at this point?  If not, return "link invalid":
+	if (empty($url))
+		$data = $txt['youtube_link_invalid'];
+	else
+	{
+		// Build the YouTube HTML string that we're going to use:
+		$width = isset($content['youtube_width']) ? $content['youtube_width'] : 640;
+		$height = isset($content['youtube_height']) ? $content['youtube_height'] : 400;
+		$data = '<object width="' . $width .'" height="' . $height .'"><param name="movie" value="' . $url . '"></param><embed src="' . $url . '" type="application/x-shockwave-flash" width="' . $width .'" height="' . $height .'"></embed></object>';
+	}
+
+	// Remove the validation variables from the context array:
+	unset($context['youtube_width']);
+	unset($context['youtube_height']);
+}
+
+function BBCode_youtube_height($height)
+{
+	global $context;
+	$context['youtube_height'] = $height;
+}
+
+function BBCode_youtube_width($width)
+{
+	global $context;
+	$context['youtube_width'] = $width;
 }
 
 function BBCode_YouTube_Button(&$buttons)
