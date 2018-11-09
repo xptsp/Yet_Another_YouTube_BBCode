@@ -1,5 +1,11 @@
+v3.4 - August 21st, 2015
+o Fixed issue where necessary tag cannot be added if other mods have modified same lines.
+o Rewrote the "fix parameter order" function to be called only when necessary.
+o Operation that calls "fix parameter order" function now skipped for nightly SMF 2.1 Beta 2.
+
 v3.3 - August 12th, 2015
 o Added settings to allow admin to set default size of the YouTube video.
+o Altered code to use new default size settings when width and/or height isn't specified.
 
 v3.2 - August 8th, 2015
 o Removed support for SMF 2.1 Beta 1

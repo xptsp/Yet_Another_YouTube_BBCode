@@ -348,39 +348,28 @@ function BBCode_YouTube_Parse($url)
 //=================================================================================
 // Function to fix parameter order of the YouTube bbcode:
 //=================================================================================
-function BBCode_YouTube_Fix_Param_Order(&$message)
+function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 {
-	global $context;
-
-	$float_params = BBCode_YouTube_parameters();
-	$pattern = '#\[youtube (.+?)\]#i' . ($context['utf8'] ? 'u' : '');
-	preg_match_all($pattern, $message, $matches);
-	$matches = array_unique($matches[0]);
-	asort($matches);
-	foreach ($matches as $match)
+	$match = substr($message, $pos - 1);
+	$match = substr($match, 0, strpos($match, ']'));
+	$params = explode(' ', $match);
+	unset($params[0]);
+	$order = array();
+	$replace_str = $old = '';
+	foreach ($params as $param)
 	{
-		$params = explode('|', str_replace(' ', '|', str_replace(']', ' ]', $match)));
-		unset($params[0]);
-		unset($params[count($params)]);
-		$order = array();
-		$old = '';
-		foreach ($params as $id => $param)
-		{
-			if (strpos($param, '=') === false && !empty($old))
-			{
-				$order[$old] .= ' ' . $param;
-				continue;
-			}
-			$key = explode('=', $param);
-			if (!isset($order[$key[0]]))
-				$order[$key[0]] = $key[1];
-			$old = $key[0];
-		}
-		$out = '[youtube';
-		foreach ($float_params as $key => $ignore)
-			$out .= (isset($order[$key]) ? ' ' . $key . '=' . $order[$key] : '');
-		$message = str_replace($match, $out . ']', $message);
+		if (strpos($param, '=') === false)
+			$order[$old] .= ' ' . $param;
+		else
+			$order[$old = substr($param, 0, strpos($param, '='))] = substr($param, strpos($param, '=') + 1);
 	}
+	foreach ($parameters as $key => $ignore)
+	{
+		$replace_str .= (isset($order[$key]) ? ' ' . $key . '=' . $order[$key] : '');
+		unset($order[$key]);
+	}
+	$message = str_replace($match, $replace_str, $message);
+	return count($order) == 0;
 }
 
 ?>

@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:YouTube</id>
 <name>Yet Another YouTube BBCode Tag</name>
-<version>3.3</version>
+<version>3.4</version>
 
 <file name="$sourcedir/Subs.php">
 	<operation>
@@ -18,18 +18,10 @@
 
 	]]></add>
 	</operation>
-	<operation>
-		<search position="after"><![CDATA[// Shall we take the time to cache this?
-]]></search>
-		<add><![CDATA[// Setup for Yet Another YouTube BBCode
-	BBCode_YouTube_Fix_Param_Order($message);
-		
-	]]></add>
-	</operation>
-	<operation>
+	<operation error="ignore">
 		<search position="after"><![CDATA[$orders = permute($preg);]]></search>
-		<add><![CDATA[if ($possible['tag'] == 'youtube')
-					$orders = array($preg);
+		<add><![CDATA[if (in_array($possible['tag'], array('youtube', 'yt', 'yt_user', 'yt_search')))
+					$orders = array(BBCode_YouTube_Params($message, $pos1, $possible['parameters']) ? $preg : array());
 				else
 					]]></add>
 	</operation>
