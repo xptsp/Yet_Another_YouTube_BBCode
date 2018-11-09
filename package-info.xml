@@ -5,14 +5,15 @@
 	<id>Dougiefresh:YouTube</id>
 	<name>Yet Another YouTube BBCode Tag</name>
 	<type>modification</type>
-	<version>3.10</version>
+	<version>3.11</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
 		<code>add_remove_hooks.php</code>
 		<modification>install_20x.xml</modification>
 		<modification>install_all.xml</modification>
-		<modification>language.english.xml</modification>
+		<modification>language_english.xml</modification>
+		<modification>language_spanish_latin.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
 		<require-file name="BBCode-YouTube2.css" destination="$themedir/css" />
 		<require-file name="youtube.gif" destination="$imagesdir/bbc" />
@@ -21,7 +22,8 @@
 		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install_20x.xml</modification>
 		<modification reverse="true">install_all.xml</modification>
-		<modification reverse="true">language.english.xml</modification>
+		<modification reverse="true">language_english.xml</modification>
+		<modification reverse="true">language_spanish_latin.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
 		<remove-file name="$themedir/css/BBCode-YouTube2.css" />
 		<remove-file name="$imagesdir/bbc/youtube.gif" />
@@ -31,7 +33,8 @@
 		<readme parsebbc="true">readme.txt</readme>
 		<code>add_remove_hooks.php</code>
 		<modification>install_all.xml</modification>
-		<modification>language.english.xml</modification>
+		<modification>language_english.xml</modification>
+		<modification>language_spanish_latin.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
 		<require-file name="BBCode-YouTube2.css" destination="$themedir/css" />
 		<require-file name="youtube.png" destination="$imagesdir/bbc" />
@@ -39,7 +42,8 @@
 	<uninstall for="2.1 Beta 2">
 		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install_all.xml</modification>
-		<modification reverse="true">language.english.xml</modification>
+		<modification reverse="true">language_english.xml</modification>
+		<modification reverse="true">language_spanish_latin.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
 		<remove-file name="$themedir/css/BBCode-YouTube2.css" />
 		<remove-file name="$imagesdir/bbc/youtube.png" />

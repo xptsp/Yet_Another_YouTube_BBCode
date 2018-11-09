@@ -1,3 +1,6 @@
+v3.11 - April 7th, 2016
+o Added Spanish Latin translation by [url=http://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee [BC][/url].
+
 v3.10 - March 7th, 2016
 o Modified auto-embed code so that YouTube URLs in signature are embedded as [b][nobbc][url]{link}[/url][/nobbc][/b].
 o Merged English and English UTF8 language files together.
