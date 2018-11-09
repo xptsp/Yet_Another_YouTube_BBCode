@@ -4,7 +4,7 @@
 <id>Dougiefresh:BBCode_youtube</id>
 <version>3.3</version>
 
-<file name="$languagedir/index.english.php">
+<file name="$languagedir/index.english-utf8.php" error="skip">
 	<operation>
 		<search position="replace"><![CDATA[// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></search>
 		<add><![CDATA[$txt['youtube'] = "Youtube";
@@ -14,7 +14,7 @@ $txt['youtube_no_embed'] = 'Show YouTube videos as a link.';
 // Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></add>
 	</operation>
 </file>
-<file name="$languagedir/ManageSettings.english.php">
+<file name="$languagedir/ManageSettings.english-utf8.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[

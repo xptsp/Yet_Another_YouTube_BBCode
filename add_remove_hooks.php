@@ -24,6 +24,7 @@ $hook_functions = array(
 	'integrate_load_theme' => 'BBCode_YouTube_LoadTheme',
 	'integrate_bbc_codes' => 'BBCode_YouTube',
 	'integrate_bbc_buttons' => 'BBCode_YouTube_Button',
+	'integrate_general_mod_settings' => 'BBCode_YouTube_Settings',
 );
 
 // Adding or removing them?

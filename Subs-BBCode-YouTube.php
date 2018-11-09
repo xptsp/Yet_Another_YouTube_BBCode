@@ -15,6 +15,12 @@ if (!defined('SMF'))
 //=================================================================================
 // BBCode Hook functions
 //=================================================================================
+function BBCode_YouTube_Settings(&$config_vars)
+{
+	$config_vars[] = array('int', 'youtube_default_width');
+	$config_vars[] = array('int', 'youtube_default_height');
+}
+
 function BBCode_YouTube_LoadTheme()
 {
 	global $context, $settings;
@@ -293,15 +299,15 @@ function BBCode_YouTube_Search(&$tag, &$data, &$disabled)
 //=================================================================================
 function BBCode_YouTube_Link(&$data)
 {
-	global $context;
+	global $context, $modSettings;
 	
 	// Set width or height with respect to aspect ratio if just one is set.  Set both if neither:
 	if (!isset($context['bbc_youtube']['width']) && isset($context['bbc_youtube']['height']))
 		$context['bbc_youtube']['width'] = floor($context['bbc_youtube']['height'] * 1.6);
 	elseif (isset($context['bbc_youtube']['width']) && !isset($context['bbc_youtube']['height']))
 		$context['bbc_youtube']['height'] = floor($context['bbc_youtube']['width'] * 0.625);
-	$width = (isset($context['bbc_youtube']['width']) ? $context['bbc_youtube']['width'] : 0);
-	$height = (isset($context['bbc_youtube']['height']) ? $context['bbc_youtube']['height'] : 0);
+	$width = (isset($context['bbc_youtube']['width']) ? $context['bbc_youtube']['width'] : (!empty($modSettings['youtube_default_width']) ? $modSettings['youtube_default_width'] : 0));
+	$height = (isset($context['bbc_youtube']['height']) ? $context['bbc_youtube']['height'] : (!empty($modSettings['youtube_default_height']) ? $modSettings['youtube_default_height'] : 0));
 
 	// Process the rest of the parameters we've saved in the validation functions:
 	if (isset($context['bbc_youtube']['autoplay']))
@@ -322,7 +328,7 @@ function BBCode_YouTube_Link(&$data)
 		$data = $data . (strpos($data, '?') !== false ? '&' : '?') . 'showinfo=0';
 
 	// Build the HTML string that we are going to display to the user:
-	$data = '<div' . ((empty($width) || empty($height)) ? '' : ' style="max-width: ' . $width . 'px; max-height: ' . $height . 'px;"') . '><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0"></iframe></div></div>';
+	$data = '<div style="' . (!empty($width) ? 'max-width: ' . $width . 'px;' : '') . (!empty($height) ? ' max-height: ' . $height . 'px;' : '') . '"><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0"></iframe></div></div>';
 }
 
 //=================================================================================
