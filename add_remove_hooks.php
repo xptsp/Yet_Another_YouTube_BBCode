@@ -22,6 +22,7 @@ if (SMF == 'SSI')
 $hook_functions = array(
 	'integrate_pre_include' => '$sourcedir/Subs-BBCode-YouTube.php',
 	'integrate_bbc_codes' => 'BBCode_YouTube',
+	'integrate_bbc_buttons' => 'BBCode_YouTube_Button',
 );
 
 // Adding or removing them?

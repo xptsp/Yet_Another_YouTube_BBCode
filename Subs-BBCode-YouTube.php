@@ -43,4 +43,17 @@ function BBCode_YouTube_valid($url)
 	return (isset($matches[1])) ? 'http://www.youtube.com/v/' . $matches[1] : false;
 }
 
+function BBCode_YouTube_Button(&$buttons)
+{
+	global $txt;
+
+	$buttons[count($buttons) - 1][] = array(
+		'image' => 'youtube',
+		'code' => 'youtube',
+		'description' => $txt['youtube'],
+		'before' => '[youtube]',
+		'after' => '[/youtube]',
+	);
+}
+
 ?>
