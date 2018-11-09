@@ -350,7 +350,7 @@ function BBCode_YouTube_Link(&$data)
 		$data = $data . (strpos($data, '?') !== false ? '&' : '?') . 'showinfo=0';
 
 	// Build the HTML string that we are going to display to the user:
-	$data = '<div style="' . (!empty($width) ? 'max-width: ' . $width . 'px;' : '') . (!empty($height) ? ' max-height: ' . $height . 'px;' : '') . '"><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0"></iframe></div></div>';
+	$data = '<div style="' . (!empty($width) ? 'max-width: ' . $width . 'px;' : '') . (!empty($height) ? ' max-height: ' . $height . 'px;' : '') . '"><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div></div>';
 }
 
 //=================================================================================
