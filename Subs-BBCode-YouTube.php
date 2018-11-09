@@ -200,9 +200,13 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 	// Do some preperation to avoid some issues within the code:
 	$data = str_replace('&amp;', '&', strip_tags($data));
 
-	// Figure out if what's been passed is a YouTube video URL or ID:
+	// Start building the YouTube URL that we are going to show to the user:
+	if (strpos($data, 'youtube-nocookie.com') !== false)
+		$context['bbc_youtube']['privacy'] = 1;
 	$server = (strpos($data, 'https://') !== false ? 'https://' : 'http://');
 	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
+
+	// Figure out if what's been passed is a YouTube video URL or ID:
 	if (($len = strlen($data)) == 11)
 		$data = $server . '/embed?v=' . ($url = $data);
 	elseif ($len == 18)
