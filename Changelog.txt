@@ -1,3 +1,6 @@
+v4.12 - April 8th, 2018
+o Fixed issue with ADK Portal that prevented video from being shown at proper size.
+
 v4.11 - March 8th, 2018
 o Added missing option to disable YouTube bbcodes in signatures.
 o Added new option to disable autoembedding for YouTube links.

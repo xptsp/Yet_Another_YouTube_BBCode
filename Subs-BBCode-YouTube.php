@@ -25,10 +25,16 @@ function BBCode_YouTube_Settings(&$config_vars)
 
 function BBCode_YouTube_LoadTheme()
 {
-	global $context, $settings;
+	global $context, $settings, $sourcedir;
+	
+	// Add necessary headers and stuff for the forum:
 	$context['html_headers'] .= '
 	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/BBCode-YouTube2.css" />';
 	$context['allowed_html_tags'][] = '<iframe>';
+	
+	// If ADK Portal is installed and we're using main page(s), add the integration hook:
+	if (file_exists($sourcedir . '/AdkPortal/AdkPortal.php') && empty($_GET['action']))
+		add_integration_function('integrate_buffer', 'BBCode_YouTube_Buffer', false);
 }
 
 function BBCode_YouTube_parameters()
@@ -349,7 +355,12 @@ function BBCode_YouTube_Link(&$data)
 		$data = $data . (strpos($data, '?') !== false ? '&' : '?') . 'showinfo=0';
 
 	// Build the HTML string that we are going to display to the user:
-	$data = '<div style="' . (!empty($width) ? 'max-width: ' . $width . 'px;' : '') . (!empty($height) ? ' max-height: ' . $height . 'px;' : '') . '"><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div></div>';
+	$data = 
+		'<div style="' . (!empty($width) ? 'max-width: ' . $width . 'px;' : '') . (!empty($height) ? ' max-height: ' . $height . 'px;' : '') . '">' .
+			'<div class="yt-wrapper">' .
+				'<iframe type="text/html" src="' . $data . '" allowfullscreen frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>' .
+			'</div>' . 
+		'</div>';
 }
 
 //=================================================================================
@@ -414,6 +425,14 @@ function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 	$message = preg_replace($pattern, $replace, $message);
 	if (strpos($cache_id, 'sig') !== false && empty($modSettings['youtube_sig_embed']))
 		$message = preg_replace('#\[youtube.*\](.*)\[\/youtube\]#i', '[url]$1[/url]', $message);
+}
+
+//=================================================================================
+// Function to remove unnecessary class addition from YouTube videos:
+//=================================================================================
+function BBCode_YouTube_Buffer($buffer)
+{
+	return str_replace('class="resize_auto_new youtube-player"', 'class="youtube-player"', $buffer);
 }
 
 ?>
