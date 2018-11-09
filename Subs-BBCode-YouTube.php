@@ -208,11 +208,11 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 
 	// Figure out if what's been passed is a YouTube video URL or ID:
 	if (($len = strlen($data)) == 11)
-		$data = $server . '/v/' . ($url = $data);
+		$data = $server . '/embed/' . ($url = $data);
 	elseif ($len == 18)
 		$data = $server . '/embed?listType=playlist&list=' . ($url = $data);
 	else
-		$data = $server . '/' . ($url = parse_yturl($data));
+		$data = $server . '/embed/' . ($url = parse_yturl($data));
 
 	// If the URL variable is empty, return link invalid to user....
 	if (empty($url))
@@ -372,7 +372,7 @@ function parse_yturl($url)
 	if (empty($result))
 	{
 		parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
-		$result = (isset($out['v']) ? 'v/' . $out['v'] : false);
+		$result = (isset($out['v']) ? 'embed/' . $out['v'] : false);
 	}
 
 	// Return the resulting string to the caller:

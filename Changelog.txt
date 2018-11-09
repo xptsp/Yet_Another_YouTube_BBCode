@@ -1,3 +1,6 @@
+v2.4 - April 12th, 2015
+o Fixed YouTube URLs used for mobile devices.
+
 v2.3 - May 1st, 2015
 o Fixed missing BBCode button in editor for SMF 2.1 Beta 1.
 o Fixed a bug where using YouTube ID instead of URL showed error message.
