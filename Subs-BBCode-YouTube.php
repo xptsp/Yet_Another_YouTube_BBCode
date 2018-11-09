@@ -20,6 +20,7 @@ function BBCode_YouTube_Settings(&$config_vars)
 	$config_vars[] = array('int', 'youtube_default_width');
 	$config_vars[] = array('int', 'youtube_default_height');
 	$config_vars[] = array('check', 'youtube_sig_embed');
+	$config_vars[] = array('check', 'youtube_force_https');
 }
 
 function BBCode_YouTube_LoadTheme()
@@ -242,7 +243,7 @@ function BBCode_YouTube_showinfo($showinfo)
 //=================================================================================
 function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 {
-	global $txt, $context;
+	global $txt, $context, $modSettings;
 
 	// Do some preperation to avoid some issues within the code:
 	$data = str_replace('&amp;', '&', strip_tags($data));
@@ -250,7 +251,7 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 	// Start building the YouTube URL that we are going to show to the user:
 	if (strpos($data, 'youtube-nocookie.com') !== false)
 		$context['bbc_youtube']['privacy'] = 1;
-	$server = (strpos($data, 'https://') !== false ? 'https://' : 'http://');
+	$server = (!empty($modSettings['youtube_force_https']) || strpos($data, 'https://') !== false ? 'https://' : 'http://');
 	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
 
 	// Figure out if what's been passed is a YouTube video URL or ID:
@@ -279,10 +280,10 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 
 function BBCode_YouTube_User(&$tag, &$data, &$disabled)
 {
-	global $txt, $context;
+	global $txt, $context, $modSettings;
 
 	// Create the actual URL we are going to be using:
-	$server = (strpos($data, 'https://') !== false ? 'https://' : 'http://');
+	$server = (!empty($modSettings['youtube_force_https']) || strpos($data, 'https://') !== false ? 'https://' : 'http://');
 	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
 	$data = $server . '/embed?listType=user_uploads&list=' . str_replace(" ", "+", strip_tags($data));
 
@@ -299,10 +300,10 @@ function BBCode_YouTube_User(&$tag, &$data, &$disabled)
 
 function BBCode_YouTube_Search(&$tag, &$data, &$disabled)
 {
-	global $txt, $context;
+	global $txt, $context, $modSettings;
 
 	// Create the actual URL we are going to be using:
-	$server = (strpos($data, 'https://') !== false ? 'https://' : 'http://');
+	$server = (!empty($modSettings['youtube_force_https']) || strpos($data, 'https://') !== false ? 'https://' : 'http://');
 	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
 	$data = $server . '/embed?listType=search&list=' . str_replace(" ", "+", strip_tags($data));
 

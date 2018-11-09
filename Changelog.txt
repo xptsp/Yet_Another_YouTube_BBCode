@@ -1,3 +1,6 @@
+v4.6 - October 9th, 2017
+o Added option to force using HTTPS instead of allowing HTTP in links.
+
 v4.5 - August 31st, 2017
 o Fixed undefined array element error in [b]Subs-BBCode-YouTube.php[/b].
 
