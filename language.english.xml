@@ -2,7 +2,7 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:BBCode_youtube</id>
-<version>3.9</version>
+<version>3.10</version>
 
 <file name="$languagedir/index.english.php">
 	<operation>
@@ -15,6 +15,25 @@ $txt['youtube_no_embed'] = 'Show YouTube videos as a link.';
 	</operation>
 </file>
 <file name="$languagedir/ManageSettings.english.php">
+	<operation>
+		<search position="end" />
+		<add><![CDATA[
+$txt['youtube_default_width'] = 'Default width used for YouTube bbcode when not specified<div class="smalltext">Use <strong>0</strong> to use responsive video display</div>';
+$txt['youtube_default_height'] = 'Default height used for YouTube bbcode when not specified<div class="smalltext">Use <strong>0</strong> to use responsive video display</div>';
+]]></add>
+	</operation>
+</file>
+<file name="$languagedir/index.english-utf8.php" error="skip">
+	<operation>
+		<search position="replace"><![CDATA[// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></search>
+		<add><![CDATA[$txt['youtube'] = "Youtube";
+$txt['youtube_link_invalid'] = '[ Invalid YouTube link ]';
+$txt['youtube_no_embed'] = 'Show YouTube videos as a link.';
+
+// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></add>
+	</operation>
+</file>
+<file name="$languagedir/ManageSettings.english-utf8.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[

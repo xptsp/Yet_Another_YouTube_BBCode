@@ -1,3 +1,7 @@
+v3.10 - March 7th, 2016
+o Modified auto-embed code so that YouTube URLs in signature are embedded as [b][nobbc][url]{link}[/url][/nobbc][/b].
+o Merged English and English UTF8 language files together.
+
 v3.9 - January 24th, 2016
 o Added code to make YouTube bbcode recognize content as 34-character playlist.
 o Added code to force aspect ratio of width to height to be 16:9.
