@@ -336,12 +336,12 @@ function BBCode_YouTube_Link(&$data)
 //=================================================================================
 function BBCode_YouTube_Parse($url)
 {
-	if (preg_match('#(/|/e/|/embed/|/p/|\?list=|\&list=)([\w-]{18})#i', $url, $matches))
+	if (preg_match('#(\?list=|\&amp;list=|/|/e/|/embed/|/p/)([\w-]{23}_[\w-]{10}|[\w-]{18})#i', $url, $matches))
 	{
 		parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
 		return ('embed?listType=playlist&list=' . $matches[2] . (isset($out['v']) ? '&v=' . $out['v'] : ''));
 	}
-	preg_match_all('#(/|/v/|/e/|/embed/|\?v=|\&v=)([\w-]{11})#i', $url, $matches);
+	preg_match_all('#(\?v=|\&anp;v=|/|/v/|/e/|/embed/)([\w-]{11})#i', $url, $matches);
 	return (isset($matches[2][count($matches[2]) - 1]) ? 'embed/' . $matches[2][count($matches[2]) - 1] : false);
 }
 
@@ -377,9 +377,9 @@ function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 //=================================================================================
 function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 {
-	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)?(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(/|/e/|/embed/|/p/|\?list=|\&list=)([\w-]{18})+\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)([\w-]{23}_[\w-]{10}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, '[youtube]$0[/youtube]', $message);
-	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)?(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(/|/v/|/e/|/embed/|\?v=|\&v=)([\w-]{11})+\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?v=|\&amp;v=|/v/|/e/|/embed/)([\w-]{11})(?:\&amp;list=([\w-]{23}_[\w-]{10}|[\w-]{18}))?\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, '[youtube]$0[/youtube]', $message);
 }
 

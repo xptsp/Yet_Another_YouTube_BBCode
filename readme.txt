@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v3.6[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v3.7[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -27,7 +27,7 @@ The [b]yt_search[/b] bbcode will show videos matching the provided search phrase
 This mod should be able to display a valid YouTube video when passing URLs.  For example, all of the following will display the YouTube video at [url]http://www.youtube.com/v/fA4cphzsjn8[/url].
 [quote]
 [b][u]For YouTube Videos:[/u][/b]
-fA4cphzsjn8
+[nobbc]fA4cphzsjn8
 http://www.youtube.com/fA4cphzsjn8
 http://www.youtube.com/embed/fA4cphzsjn8
 http://www.youtube.com/embed?v=fA4cphzsjn8
@@ -39,10 +39,10 @@ http://www.youtube.com/?v=fA4cphzsjn8
 http://www.youtube.com/user/username#p/u/11/fA4cphzsjn8
 http://www.youtube.com/sandalsResorts#p/c/54B8C800269D7C1B/0/fA4cphzsjn8
 http://www.youtube.com/watch?feature=player_embedded&v=fA4cphzsjn8
-http://www.youtube.com/?feature=player_embedded&v=fA4cphzsjn8
+http://www.youtube.com/?feature=player_embedded&v=fA4cphzsjn8[/nobbc]
 
 [b][u]For YouTube PlayLists:[/u][/b]
-http://www.youtube.com/e/PL55713C70BA91BD6E
+[nobbc]http://www.youtube.com/e/PL55713C70BA91BD6E
 http://www.youtube.com/p/PL55713C70BA91BD6E
 http://www.youtube.com/embed/PL55713C70BA91BD6E
 http://www.youtube.com/embed?list=PL55713C70BA91BD6E
@@ -50,6 +50,8 @@ http://www.youtube.com/embed?feature=player_embedded&list=PL55713C70BA91BD6E
 http://www.youtube.com/watch?v=OPf0YbXqDm0&list=PL55713C70BA91BD6E
 http://www.youtube.com/?list=PL55713C70BA91BD6E
 http://www.youtube.com/?feature=player_embedded&list=PL55713C70BA91BD6E
+https://www.youtube.com/embed/videoseries?list=PLquckZj9TVRFKWqM6LJI4a_dgvN48jZGk
+https://www.youtube.com/watch?v=Ni4ZclaiOtY&list=PLquckZj9TVRFKWqM6LJI4a_dgvN48jZGk[/nobbc]
 [/quote]
 Substituting [b]http://youtube.com[/b], [b]http://www.youtube-nocookies.com[/b], [b]http://youtu.be[/b], and [b]http://www.youtu.be[/b] also works.  [b]https://[/b] works instead of [b]http://[/b].  Please note any other parameters specified in the URL are ignored.
 
@@ -89,7 +91,7 @@ This mod was tested on SMF 2.0.10, but should work on SMF 2.1 Beta 2, as well as
 The changelog has been removed and can be seen at [url=http://www.xptsp.com/board/index.php?topic=50.msg152#msg152]XPtsp.com[/url].
 
 [color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
-Copyright (c) 2015, Douglas Orend
+Copyright (c) 2015 - 2016, Douglas Orend
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

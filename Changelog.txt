@@ -1,3 +1,7 @@
+v3.7 - January 23rd, 2015
+o Added support for the new YouTube video playlist URLs.
+o Changed regular expression to make sure "?list=", "&list=", "?v=" and "&v=" are found first.
+
 v3.6 - November 30th, 2015
 o Added auto-embed for YouTube URLs.
 
