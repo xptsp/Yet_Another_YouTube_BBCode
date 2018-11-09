@@ -1,3 +1,6 @@
+v2.1 - February 19th, 2015
+o Readded code segment from v1.8 that dealt with "method of last resort" video ID.
+
 v2.0 - February 19th, 2015
 o YouTube videos are now displayed using the "iframe" tag for HTML5 compatibility.
 o "http://www.youtube-nocookie.com" is now a valid URL to specify in the bbcode.

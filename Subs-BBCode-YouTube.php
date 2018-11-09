@@ -328,7 +328,12 @@ function parse_yturl($url)
 	$pattern .= '([\w-]{18})';            # 11 characters (Length of Youtube video ids).
 	$pattern .= '(?:.+)?$#x';             # Optional other ending URL parameters.
 	preg_match($pattern, $url, $matches);
-	$result = (isset($matches[1]) ? 'embed?listType=playlist&list=' . $matches[1] : false);
+	if (isset($matches[1]))
+	{
+		$result = 'embed?listType=playlist&list=' . $matches[1];
+		parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
+		$result .= (isset($out['v']) ? '&v' . $out['v'] : '');
+	}
 
 	// If not a playlist, then check to see if this is a valid YouTube video URL:
 	if (empty($result))
@@ -357,6 +362,13 @@ function parse_yturl($url)
 		$pattern .= '(?:.+)?$#x';         # Optional other ending URL parameters.
 		preg_match($pattern, $url, $matches);
 		$result = (isset($matches[1]) ? 'embed/' . $matches[1] : false);
+	}
+
+	// LAST RESORT: If we still have no result, detect the video ID by parsing the URL:
+	if (empty($result))
+	{
+		parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
+		$result = (isset($out['v']) ? 'v/' . $out['v'] : false);
 	}
 
 	// Return the resulting string to the caller:
