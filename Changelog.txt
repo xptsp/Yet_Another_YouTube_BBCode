@@ -1,3 +1,6 @@
+v4.13 - April 21st, 2018
+o Updated Spanish Latin translation, courtsey of [url=http://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee[/url].
+
 v4.12 - April 8th, 2018
 o Fixed issue with ADK Portal that prevented video from being shown at proper size.
 

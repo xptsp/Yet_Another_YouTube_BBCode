@@ -13,8 +13,8 @@ $txt['yt_search'] = 'Buscador de YouTube';
 $txt['yt_user'] = 'Usuario de YouTube';
 $txt['youtube_link_invalid'] = '[ V&iacute;nculo no v&aacute;lido de YouTube ]';
 $txt['youtube_no_embed'] = 'Mostrar v&iacute;deos de YouTube como un enlace.';
-//$txt['youtube_sig_embed'] = 'Allow YouTube videos in signatures?';
-//$txt['youtube_disable_autoembed'] = 'Disable YouTube autoembed?';
+$txt['youtube_sig_embed'] = '&iquest;Permitir videos de YouTube en firmas?';
+$txt['youtube_disable_autoembed'] = '&iquest;Deshabilitar la inserci&oacute;n autom&aacute;tica de YouTube?';
 ]]></add>
 	</operation>
 </file>
@@ -35,8 +35,8 @@ $txt['yt_search'] = 'Buscador de YouTube';
 $txt['yt_user'] = 'Usuario de YouTube';
 $txt['youtube_link_invalid'] = '[ Vínculo no válido de YouTube ]';
 $txt['youtube_no_embed'] = 'Mostrar vídeos de YouTube como un enlace.';
-//$txt['youtube_sig_embed'] = 'Allow YouTube videos in signatures?';
-//$txt['youtube_disable_autoembed'] = 'Disable YouTube autoembed?';
+$txt['youtube_sig_embed'] = '¿Permitir videos de YouTube en firmas?';
+$txt['youtube_disable_autoembed'] = '¿Deshabilitar la inserción automática de YouTube?';
 ]]></add>
 	</operation>
 </file>
