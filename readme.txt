@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.6[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.7[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -38,7 +38,7 @@ This mod also supports the [b]https[/b] form of the listed YouTube links, in cas
 There is a new option under [b]Profile[/b] => [b]Look and Layout[/b] called [b]Show YouTube videos as a link[/b].  Checking this box makes the mod create links instead of embedded videos in your post.
 
 [color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
-There are no admin settings to this mod.  To disable, you must uninstall this mod.
+This BBCode may be disabled by going into the [b]Admin[/b] => [b]Forum[/b] => [b]Posts and Topics[/b] => [b]Bulletin Board Code[/b] and unchecking the bbcodes you don't want to use.  You may also be uninstall this mod in order to disable it.
 
 [color=blue][b][size=12pt][u]Related Discussions[/u][/size][/b][/color]
 o [url=http://www.simplemachines.org/community/index.php?topic=522345.msg3695157#msg3695157] Adding option to stop mod from displaying YouTube video's as a video[/url]
@@ -48,32 +48,16 @@ o [url=http://stackoverflow.com/questions/7693218/youtube-i-d-parsing-for-new-ur
 This mod was tested on SMF 2.0.9, but should work on SMF 2.0 and up.
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
-[quote]
-[b][u]v1.6 - December 29th, 2014[/u][/b]
-o Fixed image install locations within [b]package-info.xml[/b].
+The changelog has been removed and can be seen at [url=http://www.xptsp.com/board/index.php?topic=50.msg152#msg152]XPtsp.com[/url].
 
-[b][u]v1.5 - December 28th, 2014[/u][/b]
-o Added [b]yt[/b] bbcode, which uses same syntax as the [b]youtube[/b] bbcode.
-o Added option to disable the embedding of YouTube videos on a per-user basis.
-o Modified to use link provided when YouTube bbcode is disabled.
+[color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
+Copyright (c) 2015, Douglas Orend
+All rights reserved.
 
-[b][u]v1.4 - December 19th, 2014[/u][/b]
-o Fixed typo that resulted in errors being logged in the admin panel...
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-[b][u]v1.3 - December 17th, 2014[/u][/b]
-o Rewrote mod to use one validation function for all bbcodes forms in this mod.
-o Modified code to return "Invalid YouTube Link" if the link isn't valid...
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-[b][u]v1.2 - December 11th, 2014[/u][/b]
-o Fixed incorrect strings added by the mod.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-[b][u]v1.1 - December 10th, 2014[/u][/b]
-o Added button for the bbcode.
-
-[b][u]v1.0 - November 22th, 2014[/u][/b]
-o Initial Release of the mod
-[/quote]
-
-[hr]
-[url=http://creativecommons.org/licenses/by/3.0][img]http://i.creativecommons.org/l/by/3.0/80x15.png[/img][/url]
-This work is licensed under a [url=http://creativecommons.org/licenses/by/3.0]Creative Commons Attribution 3.0 Unported License[/url]
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
