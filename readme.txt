@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.8[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v2.0[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -7,20 +7,31 @@
 [color=blue][b][size=12pt][u]Introduction[/u][/size][/b][/color]
 This modification adds a BBCode to the forum that shows a YouTube video in your post.
 
-This BBCode takes these forms:
+These BBCode takes these forms:
 [code]
 [youtube]{youtube link}[/youtube]
 [youtube width=x height=y]{youtube link}[/youtube]
-[youtube]{youtube ID}[/youtube]
-[youtube width=x height=y]{youtube ID}[/youtube]
+[yt]{youtube ID}[/yt]
+[yt {parameters}]{youtube ID}[/yt]
+[yt_user]{username}[/yt_user]
+[yt_user {parameters}]{username}[/yt_user]
+[yt_search]{search query}[/yt_search]
+[yt_search {parameters}]{search query}[/yt_search]
 [/code]
 where [b]width[/b] and [b]height[/b] is specified by [b]x[/b] and [b]y[/b].  If width and height aren't specified, default size is 640x400.
 
-This mod should be able to display a valid YouTube video when passing URLs.  For example, all of the following:
+The [b]yt_user[/b] bbcode will show videos by the specified YouTube username.
+
+The [b]yt_search[/b] bbcode will show videos matching the provided search phrase.
+
+This mod should be able to display a valid YouTube video when passing URLs.  For example, all of the following will display the YouTube video at [url]http://www.youtube.com/v/fA4cphzsjn8[/url].
 [quote]
+[b][u]For YouTube Videos:[/u][/b]
 fA4cphzsjn8
-http://youtu.be/fA4cphzsjn8
+http://www.youtube.com/fA4cphzsjn8
 http://www.youtube.com/embed/fA4cphzsjn8
+http://www.youtube.com/embed?v=fA4cphzsjn8
+http://www.youtube.com/embed?feature=player_embedded&v=fA4cphzsjn8
 http://www.youtube.com/watch?v=fA4cphzsjn8
 http://www.youtube.com/v/fA4cphzsjn8
 http://www.youtube.com/e/fA4cphzsjn8
@@ -29,10 +40,31 @@ http://www.youtube.com/user/username#p/u/11/fA4cphzsjn8
 http://www.youtube.com/sandalsResorts#p/c/54B8C800269D7C1B/0/fA4cphzsjn8
 http://www.youtube.com/watch?feature=player_embedded&v=fA4cphzsjn8
 http://www.youtube.com/?feature=player_embedded&v=fA4cphzsjn8
-[/quote]
-will display the YouTube video at [url]http://www.youtube.com/v/fA4cphzsjn8[/url].
 
-This mod also supports the [b]https[/b] form of the listed YouTube links, in case anyone is wondering.....
+[b][u]For YouTube PlayLists:[/u][/b]
+http://www.youtube.com/e/PL55713C70BA91BD6E
+http://www.youtube.com/p/PL55713C70BA91BD6E
+http://www.youtube.com/embed/PL55713C70BA91BD6E
+http://www.youtube.com/embed?list=PL55713C70BA91BD6E
+http://www.youtube.com/embed?feature=player_embedded&list=PL55713C70BA91BD6E
+http://www.youtube.com/watch?v=OPf0YbXqDm0&list=PL55713C70BA91BD6E
+http://www.youtube.com/?list=PL55713C70BA91BD6E
+http://www.youtube.com/?feature=player_embedded&list=PL55713C70BA91BD6E
+[/quote]
+Substituting [b]http://youtube.com[/b], [b]http://www.youtube-nocookies.com[/b], [b]http://youtu.be[/b], and [b]http://www.youtu.be[/b] also works.  [b]https://[/b] works instead of [b]http://[/b].  Please note any other parameters specified in the URL are ignored.
+
+Optional parameters and values for all YouTube bbcodes are:
+o [b]width[/b] = Specifies the width of the iframe area.
+o [b]height[/b] = Specifies the height of the iframe area.
+o [b]start[/b] = Specifies the number of seconds into the video to start at.
+o [b]end[/b] = Specifies the number of seconds into the video to stop at.
+o [b]autoplay[/b] = [b]1[/b], [b]yes[/b], [b]on[/b] or [b]true[/b]
+o [b]color[/b] = [b]red[/b] or [b]white[/b]
+o [b]theme[/b] = [b]dark[/b] or [b]light[/b]
+o [b]loop[/b] = [b]1[/b], [b]yes[/b], [b]on[/b] or [b]true[/b]
+o [b]controls[/b] = [b]0[/b], [b]no[/b], [b]off[/b], [b]hide[/b] or [b]false[/b]
+o [b]showinfo[/b] = [b]0[/b], [b]no[/b], [b]off[/b], [b]hide[/b] or [b]false[/b]
+o [b]privacy[/b] = [b]1[/b], [b]yes[/b], [b]on[/b] or [b]true[/b]
 
 [color=blue][b][size=12pt][u]Profile Settings[/u][/size][/b][/color]
 There is a new option under [b]Profile[/b] => [b]Look and Layout[/b] called [b]Show YouTube videos as a link[/b].  Checking this box makes the mod create links instead of embedded videos in your post.

@@ -1,0 +1,53 @@
+v2.0 - February 19th, 2015
+o YouTube videos are now displayed using the "iframe" tag for HTML5 compatibility.
+o "http://www.youtube-nocookie.com" is now a valid URL to specify in the bbcode.
+o Added "yt_user" bbcode to create a playlist of YouTube videos by a specific user.
+o Added "yt_search" bbcode to create a playlist based on specified search results.
+o Added support for YouTube playlist IDs as part of the "youtube" and "yt" bbcodes.
+o Modification made to BBCode hook to define all bbcode parameters only ONCE for uniformity.
+o Fixed a bug in the validation function that didn't set width/height parameters correctly.
+o Modified validation function to work properly for all known YouTube video/playlist URLs with IDs.
+o Parameters "width" and "height" are now optional instead of mandatory.
+o Fixed an issue where the video's aspect ratio is screwed up if width or height isn't specified.
+o Added "autoplay" parameter to the bbcodes.  "1", "yes", "on" and "true" are supported.
+o Added "color" parameter to the bbcodes.  "red" and "white" are supported by YouTube.
+o Added "theme" parameter to the bbcodes.  "dark" and "light" are supported by YouTube.
+o Added "loop" parameter to the bbcodes.  "1", "yes", "on" and "true" are supported.
+o Added "start" parameter to the bbcodes, specifying the number of seconds into the video to start at.
+o Added "end" parameter to the bbcodess, specifying the number of seconds into the video to stop at.
+o Added "controls" parameter to the bbcodes.  "0", "no", "off", "hide" and "false" are supported.
+o Added "showinfo" parameter to the bbcodes.  "0", "no", "off", "hide" and "false" are supported.
+o Added "privacy" parameter to the bbcodes.  "1", "yes", "on" and "true" are supported.
+o "http://www.youtube-nocookie.com" is used in privacy mode, as supported by YouTube.
+
+v1.8 - February 18th, 2015
+o Updated Regular Expression used to validate the last few reported forms of the YouTube URL.
+o Added some backup code in the event that the Regular Expression doesn't catch a valid URL.
+
+v1.7 - January 19th, 2015
+o License change to Simplified BSD.  No functionality change.
+
+v1.6 - December 29th, 2014
+o Fixed image install locations within package-info.xml.
+o Replaced replace with after in install.xml for new code in v1.5...
+
+v1.5 - December 28th, 2014
+o Added yt bbcode, which uses same syntax as the youtube bbcode.
+o Added option to disable the embedding of YouTube videos on a per-user basis.
+o Modified to use link provided when YouTube bbcode is disabled.
+
+v1.4 - December 19th, 2014
+o Fixed typo that resulted in errors being logged in the admin panel...
+
+v1.3 - December 17th, 2014
+o Rewrote mod to use one validation function for all bbcodes forms in this mod.
+o Modified code to return "Invalid YouTube Link" if the link isn't valid...
+
+v1.2 - December 11th, 2014
+o Fixed incorrect strings added by the mod.
+
+v1.1 - December 10th, 2014
+o Added button for the bbcode.
+
+v1.0 - November 22th, 2014
+o Initial Release of the mod
