@@ -59,29 +59,27 @@ function BBCode_YouTube_Validate(&$tag, &$data, &$disabled)
 {
 	global $txt, $context;
 
-	// Is this simply a YouTube video ID?  Add the rest of the URL to
-	if (strlen($data) == 11)
-		$data = $url = 'http://www.youtube.com/v/' . $data;
-	else
-	{
-		// Otherwise, figure out if the URL is actually a YouTube video URL:
-		$pattern = '#^(?:https?://)?(?:www\.)?(?:youtu\.be/|youtube\.com(?:/embed/|/v/|/watch\?v=|/watch\?.+&v=))([\w-]{11})(?:.+)?$#x';
-		preg_match($pattern, $data, $matches);
-		if (isset($matches[1]))
-			$url = (isset($disabled['youtube']) ? $data : (strpos('ttps://', $data) ? 'https' : 'http') . '://www.youtube.com/v/' . $matches[1]);
-	}
+	// Strip all HTML tags from the URLs to prevent XML attacks:
+	$data = strip_tags($data);
 
-	// Do we even have a link at this point?  If not, return "link invalid":
+	// Figure out if what's been passed is a YouTube video URL or ID:
+	if (strlen($data) == 11)
+		$data = 'http://www.youtube.com/v/' . ($url = $data);
+	else
+		$data = 'https://www.youtube.com/' . ($url = parse_yturl($data));
+
+	// If the URL variable is empty, return link invalid to user....
 	if (empty($url))
 		$data = $txt['youtube_link_invalid'];
+	// If the YouTube bbcode is disabled, create a simple link to the video:
 	elseif (isset($disabled['youtube']))
-		$data = '<a href=' . str_replace('/v/', '/watch/', $url) . '>' . $data . '</a>';
+		$data = '<a href=' . $data . $list . '>' . $data . '</a>';
+	// Otherwise, build the YouTube HTML string that we're going to use:
 	else
 	{
-		// Build the YouTube HTML string that we're going to use:
 		$width = isset($content['youtube_width']) ? $content['youtube_width'] : 640;
 		$height = isset($content['youtube_height']) ? $content['youtube_height'] : 400;
-		$data = '<object width="' . $width .'" height="' . $height .'"><param name="movie" value="' . $url . '"></param><embed src="' . $url . '" type="application/x-shockwave-flash" width="' . $width .'" height="' . $height .'"></embed></object>';
+		$data = '<object width="' . $width .'" height="' . $height .'"><param name="movie" value="' . $data . '"></param><embed src="' . $data . '" type="application/x-shockwave-flash" width="' . $width .'" height="' . $height .'"></embed></object>';
 	}
 
 	// Remove the validation variables from the context array:
@@ -112,6 +110,42 @@ function BBCode_YouTube_Button(&$buttons)
 		'before' => '[youtube]',
 		'after' => '[/youtube]',
 	);
+}
+
+function parse_yturl($url) 
+{
+	// Attempt to validate URL via Regular Expression matching:
+	$pattern = '#^(?:https?://)?';    # Optional URL scheme. Either http or https.
+	$pattern .= '(?:www\.)?';         #  Optional www subdomain.
+	$pattern .= '(?:';                #  Group host alternatives:
+	$pattern .=   'youtu\.be/';       #    Either youtu.be,
+	$pattern .=   '|youtube\.com';    #    or youtube.com
+	$pattern .=   '(?:';              #    Group path alternatives:
+	$pattern .=     '/e/';            #      or /e/,
+	$pattern .=     '|/embed/';       #      Either /embed/,
+	$pattern .=     '|/v/';           #      or /v/,
+	$pattern .=     '|/\?v=';         #      or /?v=
+	$pattern .=     '|/watch\?v=';    #      or /watch?v=,    
+	$pattern .=     '|/user/.+\#.+/'; #      or like /user/username#p/u/11/
+	$pattern .=     '|/.+\#.+/';      #      or like /sandalsResorts#p/c/54B8C800269D7C1B/0/
+	$pattern .=     '|/\?.+&v=';      #      or /?other_param&v=
+	$pattern .=     '|/watch\?.+&v='; #      or /watch?other_param&v=
+	$pattern .=   ')';                #    End path alternatives.
+	$pattern .= ')';                  #  End host alternatives.
+	$pattern .= '([\w-]{11})';        # 11 characters (Length of Youtube video ids).
+	$pattern .= '(?:.+)?$#x';         # Optional other ending URL parameters.
+	preg_match($pattern, $url, $matches);
+	$result = (isset($matches[1]) ? 'v/' . $matches[1] : false);
+
+	// If we don't have a result, attempt to detect the video ID another way:
+	if (empty($result))
+	{
+        parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
+        $result = (isset($out['v']) ? 'v/' . $out['v'] : false);
+	}
+
+	// Return the resulting string to the caller:
+	return $result;
 }
 
 ?>

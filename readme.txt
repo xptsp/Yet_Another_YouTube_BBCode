@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.7[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v1.8[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -22,9 +22,9 @@ fA4cphzsjn8
 http://youtu.be/fA4cphzsjn8
 http://www.youtube.com/embed/fA4cphzsjn8
 http://www.youtube.com/watch?v=fA4cphzsjn8
-http://www.youtube.com/?v=fA4cphzsjn8
 http://www.youtube.com/v/fA4cphzsjn8
 http://www.youtube.com/e/fA4cphzsjn8
+http://www.youtube.com/?v=fA4cphzsjn8
 http://www.youtube.com/user/username#p/u/11/fA4cphzsjn8
 http://www.youtube.com/sandalsResorts#p/c/54B8C800269D7C1B/0/fA4cphzsjn8
 http://www.youtube.com/watch?feature=player_embedded&v=fA4cphzsjn8
@@ -41,8 +41,14 @@ There is a new option under [b]Profile[/b] => [b]Look and Layout[/b] called [b]S
 This BBCode may be disabled by going into the [b]Admin[/b] => [b]Forum[/b] => [b]Posts and Topics[/b] => [b]Bulletin Board Code[/b] and unchecking the bbcodes you don't want to use.  You may also be uninstall this mod in order to disable it.
 
 [color=blue][b][size=12pt][u]Related Discussions[/u][/size][/b][/color]
-o [url=http://www.simplemachines.org/community/index.php?topic=522345.msg3695157#msg3695157] Adding option to stop mod from displaying YouTube video's as a video[/url]
-o [url=http://stackoverflow.com/questions/7693218/youtube-i-d-parsing-for-new-url-formats]Youtube I.D parsing for new URL formats[/url]
+o [url=http://www.simplemachines.org/community/index.php?topic=522345.msg3695157#msg3695157]Adding option to stop mod from displaying YouTube video's as a video[/url]
+o [url=http://stackoverflow.com/questions/2936467/parse-youtube-video-id-using-preg-match]Youtube I.D parsing for new URL formats[/url]
+o [url=http://www.simplemachines.org/community/index.php?topic=533748.0]Need help with a Regular Expression for YouTube links....[/url]
+
+[color=blue][b][size=12pt][u]Extra Credits Go Out To:[/u][/size][/b][/color]
+o [url=http://www.simplemachines.org/community/index.php?action=profile;u=317117]Sapozhnik[/url] for code assistance
+o [url=http://www.simplemachines.org/community/index.php?action=profile;u=308325]karavan2[/url] for providing code assistance
+o [url=http://www.simplemachines.org/community/index.php?action=profile;u=303481]kelvincool[/url] for Regular Expression assistance
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
 This mod was tested on SMF 2.0.9, but should work on SMF 2.0 and up.
