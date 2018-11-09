@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:YouTube</id>
 <name>Yet Another YouTube BBCode Tag</name>
-<version>4.7</version>
+<version>4.8</version>
 
 <file name="$sourcedir/Post.php">
 	<operation error="ignore">
@@ -20,18 +20,6 @@
 		<search position="after"><![CDATA[// The non-breaking-space looks a bit different each time.]]></search>
 		<add><![CDATA[// Embed YouTube URLs in the YouTube bbcode tags:
 	BBCode_YouTube_Embed($message, $smileys, $cache_id, $parse_tags);
-
-	]]></add>
-	</operation>
-	<operation>
-		<search position="after"><![CDATA[if ($smileys === 'print')]]></search>
-		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
-	global $options;
-	if (!empty($options['youtube_no_embed']))
-	{
-		$disabled['youtube'] = true;
-		$disabled['yt'] = true;
-	}
 
 	]]></add>
 	</operation>

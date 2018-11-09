@@ -1,3 +1,10 @@
+v4.8 - February 20th, 2018
+o Removed support for SMF 2.1 Beta 2.
+o Added support for SMF 2.1 Beta 3.
+o Moved bbcode disabling code from [b]Sources/Subs.php[/b] to [b]Subs-BBCode-YouTube.php[/b].
+o Added translators to the mod's [b]README.txt[/b] file.
+o Added [b]LICENSE.txt[/b] to satisfy licensing concerns.
+
 v4.7 - October 17th, 2017
 o Removed option to force HTTPS mode.
 o Modified code to force HTTPS mode in all YouTube tags.

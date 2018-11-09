@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v4.7[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v4.8[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -85,6 +85,9 @@ o [url=http://www.simplemachines.org/community/index.php?topic=533748.0]Need hel
 o [url=http://www.simplemachines.org/community/index.php?action=profile;u=317117]Sapozhnik[/url] for code assistance
 o [url=http://www.simplemachines.org/community/index.php?action=profile;u=308325]karavan2[/url] for providing code assistance
 o [url=http://www.simplemachines.org/community/index.php?action=profile;u=303481]kelvincool[/url] for Regular Expression assistance
+
+[color=blue][b][size=12pt][u]Translators[/u][/size][/b][/color]
+o Spanish Latin: [url=http://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee [BC][/url]
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
 This mod was tested on SMF 2.0.10, but should work on SMF 2.1 Beta 3, as well as SMF 2.0 and up.  SMF 2.1 Beta 2 and SMF 1.x will not be supported.

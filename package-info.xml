@@ -5,7 +5,7 @@
 	<id>Dougiefresh:YouTube</id>
 	<name>Yet Another YouTube BBCode Tag</name>
 	<type>modification</type>
-	<version>4.7</version>
+	<version>4.8</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
@@ -31,7 +31,7 @@
 		<remove-file name="$imagesdir/bbc/yt_user.gif" />
 	</uninstall>
 
-	<install for="2.1 Beta 2">
+	<install for="2.1 Beta 3">
 		<readme parsebbc="true">readme.txt</readme>
 		<code>add_remove_hooks.php</code>
 		<modification>install_21x.xml</modification>
@@ -43,7 +43,7 @@
 		<require-file name="yt_search.png" destination="$imagesdir/bbc" />
 		<require-file name="yt_user.png" destination="$imagesdir/bbc" />
 	</install>
-	<uninstall for="2.1 Beta 2">
+	<uninstall for="2.1 Beta 3">
 		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install_21x.xml</modification>
 		<modification reverse="true">language_english.xml</modification>

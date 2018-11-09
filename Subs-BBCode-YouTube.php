@@ -397,8 +397,13 @@ function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 //=================================================================================
 function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 {
-	global $context, $modSettings;
+	global $options, $context, $modSettings;
 	
+	// Added to allow the user the option to not embed a YouTube video
+	if (!empty($options['youtube_no_embed']))
+		$modSettings['disabledBBC'] = (!empty($modSettings['disabledBBC']) ? $modSettings['disabledBBC'] . ',' : '') . 'youtube,yt,yt_search,yt_user';
+
+	// Is autoembedding links disabled?  If so, return to caller:
 	if (!empty($context['bbc_youtube']['ignore']))
 		return;
 	$replace = (strpos($cache_id, 'sig') !== false ? '[url]$0[/url]' : '[youtube]$0[/youtube]');

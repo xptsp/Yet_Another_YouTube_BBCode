@@ -3,29 +3,8 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:YouTube</id>
 <name>Yet Another YouTube BBCode Tag</name>
-<version>4.7</version>
+<version>4.8</version>
 
-<file name="$sourcedir/Subs.php">
-	<operation>
-		<search position="after"><![CDATA[if ($smileys === 'print')]]></search>
-		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
-	global $options;
-	if (!empty($options['youtube_no_embed']))
-	{
-		$disabled['youtube'] = true;
-		$disabled['yt'] = true;
-	}
-
-	]]></add>
-	</operation>
-	<operation error="ignore">
-		<search position="after"><![CDATA[$orders = permute($preg);]]></search>
-		<add><![CDATA[if (in_array($possible['tag'], array('youtube', 'yt', 'yt_user', 'yt_search')))
-					$orders = array(BBCode_YouTube_Params($message, $pos1, $possible['parameters']) ? $preg : array());
-				else
-					]]></add>
-	</operation>
-</file>
 <file name="$themedir/Settings.template.php">
 	<operation>
 		<search position="after"><![CDATA[$txt['theme_opt_posting'],]]></search>
