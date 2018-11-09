@@ -20,7 +20,6 @@ function BBCode_YouTube_Settings(&$config_vars)
 	$config_vars[] = array('int', 'youtube_default_width');
 	$config_vars[] = array('int', 'youtube_default_height');
 	$config_vars[] = array('check', 'youtube_sig_embed');
-	$config_vars[] = array('check', 'youtube_force_https');
 }
 
 function BBCode_YouTube_LoadTheme()
@@ -251,8 +250,7 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 	// Start building the YouTube URL that we are going to show to the user:
 	if (strpos($data, 'youtube-nocookie.com') !== false)
 		$context['bbc_youtube']['privacy'] = 1;
-	$server = (!empty($modSettings['youtube_force_https']) || strpos($data, 'https://') !== false ? 'https://' : 'http://');
-	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
+	$server = 'https://www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
 
 	// Figure out if what's been passed is a YouTube video URL or ID:
 	if (($len = strlen($data)) == 11)
@@ -283,8 +281,7 @@ function BBCode_YouTube_User(&$tag, &$data, &$disabled)
 	global $txt, $context, $modSettings;
 
 	// Create the actual URL we are going to be using:
-	$server = (!empty($modSettings['youtube_force_https']) || strpos($data, 'https://') !== false ? 'https://' : 'http://');
-	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
+	$server = 'https://www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
 	$data = $server . '/embed?listType=user_uploads&list=' . str_replace(" ", "+", strip_tags($data));
 
 	// If the YouTube bbcode is disabled, create a simple link to the video:
@@ -303,8 +300,7 @@ function BBCode_YouTube_Search(&$tag, &$data, &$disabled)
 	global $txt, $context, $modSettings;
 
 	// Create the actual URL we are going to be using:
-	$server = (!empty($modSettings['youtube_force_https']) || strpos($data, 'https://') !== false ? 'https://' : 'http://');
-	$server = $server . 'www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
+	$server = 'https://www.youtube' . (isset($context['bbc_youtube']['privacy']) ? '-nocookie' : '') . '.com';
 	$data = $server . '/embed?listType=search&list=' . str_replace(" ", "+", strip_tags($data));
 
 	// If the YouTube bbcode is disabled, create a simple link to the video:
