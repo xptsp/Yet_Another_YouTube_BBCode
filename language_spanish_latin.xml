@@ -2,7 +2,7 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:BBCode_youtube</id>
-<version>4.11</version>
+<version>4.14</version>
 
 <file name="$languagedir/index.spanish_latin.php" error="skip">
 	<operation>

@@ -1,3 +1,7 @@
+v4.14 - November 9th, 2018
+o No functionality change.
+o Updated documentation to point to new website.
+
 v4.13 - April 21st, 2018
 o Updated Spanish Latin translation, courtsey of [url=http://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee[/url].
 
