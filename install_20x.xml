@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:YouTube</id>
 <name>Yet Another YouTube BBCode Tag</name>
-<version>4.1</version>
+<version>4.2</version>
 
 <file name="$sourcedir/Post.php">
 	<operation error="ignore">
@@ -21,6 +21,45 @@
 		<add><![CDATA[// Embed YouTube URLs in the YouTube bbcode tags:
 	BBCode_YouTube_Embed($message, $smileys, $cache_id, $parse_tags);
 
+	]]></add>
+	</operation>
+	<operation>
+		<search position="after"><![CDATA[if ($smileys === 'print')]]></search>
+		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
+	global $options;
+	if (!empty($options['youtube_no_embed']))
+	{
+		$disabled['youtube'] = true;
+		$disabled['yt'] = true;
+	}
+
+	]]></add>
+	</operation>
+	<operation error="ignore">
+		<search position="after"><![CDATA[$orders = permute($preg);]]></search>
+		<add><![CDATA[if (in_array($possible['tag'], array('youtube', 'yt', 'yt_user', 'yt_search')))
+					$orders = array(BBCode_YouTube_Params($message, $pos1, $possible['parameters']) ? $preg : array());
+				else
+					]]></add>
+	</operation>
+</file>
+<file name="$themedir/Profile.template.php">
+	<operation>
+		<search position="after"><![CDATA[// Choose WYSIWYG settings?]]></search>
+		<add><![CDATA[// Added to allow the user the option to not embed a YouTube video
+	echo '
+							<li>
+								<input type="hidden" name="default_options[youtube_no_embed]" value="0" />
+								<label for="youtube_no_embed"><input type="checkbox" name="default_options[youtube_no_embed]" id="youtube_no_embed" value="1"', !empty($context['member']['options']['youtube_no_embed']) ? ' checked="checked"' : '', ' class="input_check" /> ', $txt['youtube_no_embed'], '</label>
+							</li>';
+
+	]]></add>
+	</operation>
+</file>
+<file name="$sourcedir/PortalBlocks.php" error="skip">
+	<operation>
+		<search position="after"><![CDATA[$shoutbox['warning'] = parse_bbc($shoutbox['warning']);]]></search>
+		<add><![CDATA[$context['bbc_youtube']['ignore'] = true;
 	]]></add>
 	</operation>
 </file>

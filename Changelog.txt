@@ -1,3 +1,7 @@
+v4.2 - July 6th, 2017
+o Reorganized file edits to support SMF 2.1 Beta 3 properly.
+o Removed support for SMF 2.1 Beta 2.
+
 v4.1 - October 24th, 2016
 o Added code to SimplePortal code to skip embedding links for shoutboxes.
 
