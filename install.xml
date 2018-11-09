@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<id>Dougiefresh:YouTube</id>
+<name>Yet Another YouTube BBCode Tag</name>
+<version>1.0</version>
+
+<file name="$sourcedir/Post.php">
+	<operation>
+		<search position="replace"><![CDATA['<img>']]></search>
+		<add><![CDATA['<img><object><embed>']]></add>
+	</operation>
+	<operation>
+		<search position="replace"><![CDATA['<img>']]></search>
+		<add><![CDATA['<img><object><embed>']]></add>
+	</operation>
+</file>
+</modification>
