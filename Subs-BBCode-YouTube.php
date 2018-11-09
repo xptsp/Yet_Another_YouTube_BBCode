@@ -19,6 +19,7 @@ function BBCode_YouTube_Settings(&$config_vars)
 {
 	$config_vars[] = array('int', 'youtube_default_width');
 	$config_vars[] = array('int', 'youtube_default_height');
+	$config_vars[] = array('check', 'youtube_sig_embed');
 }
 
 function BBCode_YouTube_LoadTheme()
@@ -399,15 +400,16 @@ function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 //=================================================================================
 function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 {
-	global $context;
+	global $context, $modSettings;
+	
 	if (!empty($context['bbc_youtube']['ignore']))
 		return;
 	$replace = (strpos($cache_id, 'sig') !== false ? '[url]$0[/url]' : '[youtube]$0[/youtube]');
-	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be|)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, $replace, $message);
-	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?v=|\&amp;v=|/v/|/e/|/embed/)([\w-]{11})(?:\&amp;list=(PL[\w-]{32}|[\w-]{18}))?\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be|)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?v=|\&amp;v=|/v/|/e/|/embed/|)([\w-]{11})(?:\&amp;list=(PL[\w-]{32}|[\w-]{18}))?\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, $replace, $message);
-	if (strpos($cache_id, 'sig') !== false)
+	if (strpos($cache_id, 'sig') !== false && empty($modSettings['youtube_sig_embed']))
 		$message = preg_replace('#\[youtube.*\](.*)\[\/youtube\]#i', '[url]$1[/url]', $message);
 }
 
