@@ -208,7 +208,7 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 
 	// Figure out if what's been passed is a YouTube video URL or ID:
 	if (($len = strlen($data)) == 11)
-		$data = $server . '/embed?v=' . ($url = $data);
+		$data = $server . '/v/' . ($url = $data);
 	elseif ($len == 18)
 		$data = $server . '/embed?listType=playlist&list=' . ($url = $data);
 	else
