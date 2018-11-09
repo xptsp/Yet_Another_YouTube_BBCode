@@ -381,7 +381,7 @@ function BBCode_YouTube_Params(&$message, $pos, &$parameters)
 	$replace_str = $old = '';
 	foreach ($params as $param)
 	{
-		if (strpos($param, '=') === false)
+		if (strpos($param, '=') === false && isset($order[$old]))
 			$order[$old] .= ' ' . $param;
 		else
 			$order[$old = substr($param, 0, strpos($param, '='))] = substr($param, strpos($param, '=') + 1);
@@ -405,9 +405,9 @@ function BBCode_YouTube_Embed(&$message, &$smileys, &$cache_id, &$parse_tags)
 	if (!empty($context['bbc_youtube']['ignore']))
 		return;
 	$replace = (strpos($cache_id, 'sig') !== false ? '[url]$0[/url]' : '[youtube]$0[/youtube]');
-	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be|)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?list=|\&amp;list=|/e/|/embed/|/p/)(PL[\w-]{32}|[\w-]{18})\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, $replace, $message);
-	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be|)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?v=|\&amp;v=|/v/|/e/|/embed/|)([\w-]{11})(?:\&amp;list=(PL[\w-]{32}|[\w-]{18}))?\??[/\w\-_\~%@\?;=#}\\\\]?~';
+	$pattern = '~(?<=[\s>\.(;\'"]|^)(?:https?\:\/\/)(?:www\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)/?(?:/[\w\-_\~%\.@!,\?&;=#(){}+:\'\\\\]*)*(\?v=|\&amp;v=|/v/|/e/|/embed/|)([\w-]{11})(?:\&amp;list=(PL[\w-]{32}|[\w-]{18}))?\??[/\w\-_\~%@\?;=#}\\\\]?~';
 	$message = preg_replace($pattern, $replace, $message);
 	if (strpos($cache_id, 'sig') !== false && empty($modSettings['youtube_sig_embed']))
 		$message = preg_replace('#\[youtube.*\](.*)\[\/youtube\]#i', '[url]$1[/url]', $message);

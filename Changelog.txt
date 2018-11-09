@@ -1,3 +1,6 @@
+v4.5 - August 31st, 2017
+o Fixed undefined array element error in [b]Subs-BBCode-YouTube.php[/b].
+
 v4.4 - August 24th, 2017
 o Fixed auto-embed so that [b]youtu.be/RkZkekS8NQU[/b] will embed itself properly.
 o Added option to allow to embed YouTube videos in signatures. (BAD IDEA!!)
