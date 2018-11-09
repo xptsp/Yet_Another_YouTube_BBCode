@@ -1,3 +1,6 @@
+v3.8 - January 23rd, 2016
+o Modified new YouTube video playlist URLs support for better coverage.
+
 v3.7 - January 23rd, 2015
 o Added support for the new YouTube video playlist URLs.
 o Changed regular expression to make sure "?list=", "&list=", "?v=" and "&v=" are found first.
