@@ -1,3 +1,9 @@
+v3.0 - July 17th, 2015
+o CrescentEclipse added responsive video display elements to this mod.  Thanks, CrescentEclipse!
+o When specifying width and height parameters, they are now treated as maximum display size.
+o Changed default width and height from 640x400 to 100% of post display area.
+o Modified "start" and "end" parameters to use "minutes:seconds" format in addition to "seconds".
+
 v2.5 - April 13th, 2015
 o Fixed mistake introduced in v2.4 regarding YouTube links.
 

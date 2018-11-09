@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v2.5[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v3.0[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -18,7 +18,7 @@ These BBCode takes these forms:
 [yt_search]{search query}[/yt_search]
 [yt_search {parameters}]{search query}[/yt_search]
 [/code]
-where [b]width[/b] and [b]height[/b] is specified by [b]x[/b] and [b]y[/b].  If width and height aren't specified, default size is 640x400.
+where [b]width[/b] and [b]height[/b] is specified by [b]x[/b] and [b]y[/b].  If width and height aren't specified, width is 100% of the post display area and height in a 16:9 ratio to the width.
 
 The [b]yt_user[/b] bbcode will show videos by the specified YouTube username.
 
@@ -56,8 +56,8 @@ Substituting [b]http://youtube.com[/b], [b]http://www.youtube-nocookies.com[/b],
 Optional parameters and values for all YouTube bbcodes are:
 o [b]width[/b] = Specifies the width of the iframe area.
 o [b]height[/b] = Specifies the height of the iframe area.
-o [b]start[/b] = Specifies the number of seconds into the video to start at.
-o [b]end[/b] = Specifies the number of seconds into the video to stop at.
+o [b]start[/b] = Specifies how far into the video to start at.  Valid formats: "Seconds" or "Minutes:Seconds"
+o [b]end[/b] = Specifies how far into the video to stop at.  Valid formats: "Seconds" or "Minutes:Seconds"
 o [b]autoplay[/b] = [b]1[/b], [b]yes[/b], [b]on[/b] or [b]true[/b]
 o [b]color[/b] = [b]red[/b] or [b]white[/b]
 o [b]theme[/b] = [b]dark[/b] or [b]light[/b]
@@ -83,7 +83,7 @@ o [url=http://www.simplemachines.org/community/index.php?action=profile;u=308325
 o [url=http://www.simplemachines.org/community/index.php?action=profile;u=303481]kelvincool[/url] for Regular Expression assistance
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
-This mod was tested on SMF 2.0.9, but should work on SMF 2.1 Beta 1, as well as SMF 2.0 and up.  SMF 1.x is not and will not be supported.
+This mod was tested on SMF 2.0.10, but should work on SMF 2.1 Beta 1, as well as SMF 2.0 and up.  SMF 1.x is not and will not be supported.
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
 The changelog has been removed and can be seen at [url=http://www.xptsp.com/board/index.php?topic=50.msg152#msg152]XPtsp.com[/url].

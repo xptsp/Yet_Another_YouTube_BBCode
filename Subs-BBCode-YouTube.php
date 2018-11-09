@@ -2,31 +2,55 @@
 /**********************************************************************************
 * Subs-BBCode-YouTube.php
 ***********************************************************************************
+* This mod is licensed under the 2-clause BSD License, which can be found here:
+*	http://opensource.org/licenses/BSD-2-Clause
 ***********************************************************************************
 * This program is distributed in the hope that it is and will be useful, but      *
 * WITHOUT ANY WARRANTIES; without even any implied warranty of MERCHANTABILITY    *
 * or FITNESS FOR A PARTICULAR PURPOSE.                                            *
 **********************************************************************************/
-if (!defined('SMF'))
+if (!defined('SMF')) 
 	die('Hacking attempt...');
+
+function BBCode_YouTube_LoadTheme()
+{
+	global $context, $settings;
+	$context['html_headers'] .= '
+	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/BBCode-YouTube.css" />';
+}
 
 //=================================================================================
 // BBCode Hook functions
 //=================================================================================
 function BBCode_YouTube(&$bbc)
 {
+	// Since all the bbcodes use the same parameters, let's define them ONCE!
+	$params = array(
+		'width' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_YouTube_width'),
+		'height' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_YouTube_height'),
+		'autoplay' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_YouTube_autoplay'),
+		'color' => array('optional' => true, 'match' => '(red|white)', 'validate' => 'BBCode_YouTube_color'),
+		'theme' => array('optional' => true, 'match' => '(light|dark)', 'validate' => 'BBCode_YouTube_theme'),
+		'loop' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_YouTube_loop'),
+		'start' => array('optional' => true, 'match' => '(\d+|\d+\:\d+)', 'validate' => 'BBCode_YouTube_start'),
+		'end' => array('optional' => true, 'match' => '(\d+|\d+\:\d+)', 'validate' => 'BBCode_YouTube_end'),
+		'privacy' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_YouTube_privacy'),
+		'controls' => array('optional' => true, 'match' => '(0|no|off|false|hide)', 'validate' => 'BBCode_YouTube_controls'),
+		'showinfo' => array('optional' => true, 'match' => '(0|no|off|false|hide)', 'validate' => 'BBCode_YouTube_showinfo'),
+	);
+
 	// Syntax: [youtube {params}]{URL}[/youtube]
-	$b[0] = array(
+	$bbc[] = array(
 		'tag' => 'youtube',
 		'type' => 'unparsed_content',
 		'content' => '$1',
-		'parameters' => array(),
+		'parameters' => $params,
 		'validate' => 'BBCode_YouTube_URL',
 		'disabled_content' => '$1',
 	);
 
 	// Syntax: [youtube]{URL}[/youtube]
-	$b[1] = array(
+	$bbc[] = array(
 		'tag' => 'youtube',
 		'type' => 'unparsed_content',
 		'content' => '$1',
@@ -35,17 +59,17 @@ function BBCode_YouTube(&$bbc)
 	);
 
 	// Syntax: [yt {params}]{URL}[/yt]
-	$b[2] = array(
+	$bbc[] = array(
 		'tag' => 'yt',
 		'type' => 'unparsed_content',
 		'content' => '$1',
-		'parameters' => array(),
+		'parameters' => $params,
 		'validate' => 'BBCode_YouTube_URL',
 		'disabled_content' => '$1',
 	);
 
 	// Syntax: [yt]{URL}[/yt]
-	$b[3] = array(
+	$bbc[] = array(
 		'tag' => 'yt',
 		'type' => 'unparsed_content',
 		'content' => '$1',
@@ -53,18 +77,18 @@ function BBCode_YouTube(&$bbc)
 		'disabled_content' => '$1',
 	);
 
-	// Syntax: [yt_user {params}]{URL}[/yt_user]
-	$b[4] = array(
+	// Syntax: [yt_user {params}]{user name}[/yt_user]
+	$bbc[] = array(
 		'tag' => 'yt_user',
 		'type' => 'unparsed_content',
 		'content' => '$1',
-		'parameters' => array(),
+		'parameters' => $params,
 		'validate' => 'BBCode_YouTube_User',
 		'disabled_content' => '$1',
 	);
 
-	// Syntax: [yt_user]{URL}[/yt_user]
-	$b[5] = array(
+	// Syntax: [yt_user]{user name}[/yt_user]
+	$bbc[] = array(
 		'tag' => 'yt_user',
 		'type' => 'unparsed_content',
 		'content' => '$1',
@@ -72,40 +96,24 @@ function BBCode_YouTube(&$bbc)
 		'disabled_content' => '$1',
 	);
 
-	// Syntax: [yt_search {params}]{URL}[/yt_search]
-	$b[6] = array(
+	// Syntax: [yt_search {params}]{search spec}[/yt_search]
+	$bbc[] = array(
 		'tag' => 'yt_search',
 		'type' => 'unparsed_content',
 		'content' => '$1',
-		'parameters' => array(),
+		'parameters' => $params,
 		'validate' => 'BBCode_YouTube_Search',
 		'disabled_content' => '$1',
 	);
 
-	// Syntax: [yt_search]{URL}[/yt_search]
-	$b[7] = array(
+	// Syntax: [yt_search]{search spec}[/yt_search]
+	$bbc[] = array(
 		'tag' => 'yt_search',
 		'type' => 'unparsed_content',
 		'content' => '$1',
 		'validate' => 'BBCode_YouTube_Search',
 		'disabled_content' => '$1',
 	);
-
-	// Since all the bbcodes use the same parameters, let's define them ONCE!
-	$b[0]['parameters'] = $b[2]['parameters'] = $b[4]['parameters'] = $b[6]['parameters'] = array(
-		'width' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_youtube_width'),
-		'height' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_youtube_height'),
-		'autoplay' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_youtube_autoplay'),
-		'color' => array('optional' => true, 'match' => '(red|white)', 'validate' => 'BBCode_youtube_color'),
-		'theme' => array('optional' => true, 'match' => '(light|dark)', 'validate' => 'BBCode_youtube_theme'),
-		'loop' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_youtube_loop'),
-		'start' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_youtube_start'),
-		'end' => array('optional' => true, 'match' => '(\d+)', 'validate' => 'BBCode_youtube_end'),
-		'privacy' => array('optional' => true, 'match' => '(1|yes|on|true)', 'validate' => 'BBCode_youtube_privacy'),
-		'controls' => array('optional' => true, 'match' => '(0|no|off|false|hide)', 'validate' => 'BBCode_youtube_controls'),
-		'showinfo' => array('optional' => true, 'match' => '(0|no|off|false|hide)', 'validate' => 'BBCode_youtube_showinfo'),
-	);
-	$bbc = array_merge($bbc, $b);
 }
 
 function BBCode_YouTube_Button(&$buttons)
@@ -124,67 +132,73 @@ function BBCode_YouTube_Button(&$buttons)
 //=================================================================================
 // Parameter validation functions
 //=================================================================================
-function BBCode_youtube_height($height)
+function BBCode_YouTube_height($height)
 {
 	global $context;
-	$context['bbc_youtube']['height'] = $height;
+	$context['bbc_youtube']['height'] = max(0, (int) $height);
 }
 
-function BBCode_youtube_width($width)
+function BBCode_YouTube_width($width)
 {
 	global $context;
-	$context['bbc_youtube']['width'] = $width;
+	$context['bbc_youtube']['width'] = max(0, (int) $width);
 }
 
-function BBCode_youtube_autoplay($autoplay)
+function BBCode_YouTube_autoplay($autoplay)
 {
 	global $context;
 	$context['bbc_youtube']['autoplay'] = 1;
 }
 
-function BBCode_youtube_color($color)
+function BBCode_YouTube_color($color)
 {
 	global $context;
 	$context['bbc_youtube']['color'] = $color;
 }
 
-function BBCode_youtube_theme($theme)
+function BBCode_YouTube_theme($theme)
 {
 	global $context;
 	$context['bbc_youtube']['theme'] = $theme;
 }
 
-function BBCode_youtube_loop($loop)
+function BBCode_YouTube_loop($loop)
 {
 	global $context;
 	$context['bbc_youtube']['loop'] = 1;
 }
 
-function BBCode_youtube_start($start)
+function BBCode_YouTube_start($start)
 {
 	global $context;
-	$context['bbc_youtube']['start'] = $start;
+	$minutes = 0;
+	if (strpos($start, ':'))
+		list($minutes, $start) = explode(':', $start);
+	$context['bbc_youtube']['start'] = ($minutes * 60) + $start;
 }
 
-function BBCode_youtube_end($end)
+function BBCode_YouTube_end($end)
 {
 	global $context;
-	$context['bbc_youtube']['end'] = $end;
+	$minutes = 0;
+	if (strpos($end, ':'))
+		list($minutes, $end) = explode(':', $end);
+	$context['bbc_youtube']['end'] = ($minutes * 60) + $end;
 }
 
-function BBCode_youtube_privacy($privacy)
+function BBCode_YouTube_privacy($privacy)
 {
 	global $context;
-	$context['bbc_youtube']['privacy'] = $privacy;
+	$context['bbc_youtube']['privacy'] = 1;
 }
 
-function BBCode_youtube_controls($controls)
+function BBCode_YouTube_controls($controls)
 {
 	global $context;
 	$context['bbc_youtube']['controls'] = 1;
 }
 
-function BBCode_youtube_showinfo($showinfo)
+function BBCode_YouTube_showinfo($showinfo)
 {
 	global $context;
 	$context['bbc_youtube']['showinfo'] = 1;
@@ -212,7 +226,7 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 	elseif ($len == 18)
 		$data = $server . '/embed?listType=playlist&list=' . ($url = $data);
 	else
-		$data = $server . '/' . ($url = parse_yturl($data));
+		$data = $server . '/' . ($url = BBCode_YouTube_Parse($data));
 
 	// If the URL variable is empty, return link invalid to user....
 	if (empty($url))
@@ -280,8 +294,8 @@ function BBCode_YouTube_Link(&$data)
 		$context['bbc_youtube']['width'] = floor($context['bbc_youtube']['height'] * 1.6);
 	elseif (isset($context['bbc_youtube']['width']) && !isset($context['bbc_youtube']['height']))
 		$context['bbc_youtube']['height'] = floor($context['bbc_youtube']['width'] * 0.625);
-	$width = (isset($context['bbc_youtube']['width']) ? $context['bbc_youtube']['width'] : 640);
-	$height = (isset($context['bbc_youtube']['height']) ? $context['bbc_youtube']['height'] : 400);
+	$width = (isset($context['bbc_youtube']['width']) ? $context['bbc_youtube']['width'] : 0);
+	$height = (isset($context['bbc_youtube']['height']) ? $context['bbc_youtube']['height'] : 0);
 
 	// Process the rest of the parameters we've saved in the validation functions:
 	if (isset($context['bbc_youtube']['autoplay']))
@@ -302,81 +316,21 @@ function BBCode_YouTube_Link(&$data)
 		$data = $data . (strpos($data, '?') !== false ? '&' : '?') . 'showinfo=0';
 
 	// Build the HTML string that we are going to display to the user:
-	$data = '<iframe class="youtube-player" type="text/html" width="' . $width . '" height="' . $height . '" src="' . $data . '" allowfullscreen frameborder="0"></iframe>';
+	$data = '<div' . ((empty($width) && empty($height)) ? '' : ' style="max-width: ' . $width . 'px; max-height: ' . $height . 'px;"') . '><div class="yt-wrapper"><iframe class="youtube-player" type="text/html" src="' . $data . '" allowfullscreen frameborder="0"></iframe></div></div>';
 }
 
 //=================================================================================
 // Regular Expression function for URL validation:
 //=================================================================================
-function parse_yturl($url)
+function BBCode_YouTube_Parse($url)
 {
-	// Check to see if this is a valid YouTube playlist URL:
-	$pattern = '#^(?:https?://)?';        # Optional URL scheme. Either http or https.
-	$pattern .= '(?:www\.)?';             #  Optional www subdomain.
-	$pattern .= '(?:';                    #  Group host alternatives:
-	$pattern .=   'youtu\.be/';           #    Either youtu.be,
-	$pattern .=   '|youtube\.com';        #    or youtube.com
-	$pattern .=   '|youtube-nocookie\.com';        #    or youtube.com
-	$pattern .=   '(?:';                  #    Group path alternatives:
-	$pattern .=     '/e/';                #      or /e/,
-	$pattern .=     '|/p/';               #      or /p/,
-	$pattern .=     '|/embed/';           #      Either /embed/,
-	$pattern .=     '|/embed\?list=';     #      or /embed?list=,
-	$pattern .=     '|/embed\?.+&list=';  #      or /embed?other_param&list=
-	$pattern .=     '|/watch\?list=';     #      or /watch?list=,
-	$pattern .=     '|/watch\?.+&list=';  #      or /watch?other_param&list=
-	$pattern .=     '|/\?list=';          #      or /?list=
-	$pattern .=     '|/\?.+&list=';       #      or /?other_param&list=
-	$pattern .=   ')';                    #    End path alternatives.
-	$pattern .= ')';                      #  End host alternatives.
-	$pattern .= '([\w-]{18})';            # 11 characters (Length of Youtube video ids).
-	$pattern .= '(?:.+)?$#x';             # Optional other ending URL parameters.
-	preg_match($pattern, $url, $matches);
-	if (isset($matches[1]))
-	{
-		$result = 'embed?listType=playlist&list=' . $matches[1];
-		parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
-		$result .= (isset($out['v']) ? '&v' . $out['v'] : '');
-	}
-
-	// If not a playlist, then check to see if this is a valid YouTube video URL:
-	if (empty($result))
-	{
-		$pattern = '#^(?:https?://)?';    # Optional URL scheme. Either http or https.
-		$pattern .= '(?:www\.)?';         #  Optional www subdomain.
-		$pattern .= '(?:';                #  Group host alternatives:
-		$pattern .=   'youtu\.be/';       #    Either youtu.be,
-		$pattern .=   '|youtube\.com';    #    or youtube.com
-		$pattern .=   '|youtube-nocookie\.com';  #    or youtube-nocookie.com
-		$pattern .=   '(?:';              #    Group path alternatives:
-		$pattern .=     '/embed/';        #      Either /embed/,
-		$pattern .=     '/embed\?v=';     #      Either /embed?v=,
-		$pattern .=     '/embed\?.+&v=';  #      Either /embed?other_param&v=,
-		$pattern .=     '|/e/';           #      or /e/,
-		$pattern .=     '|/v/';           #      or /v/,
-		$pattern .=     '|/\?v=';         #      or /?v=
-		$pattern .=     '|/\?.+&v=';      #      or /?other_param&v=
-		$pattern .=     '|/watch\?v=';    #      or /watch?v=,
-		$pattern .=     '|/watch\?.+&v='; #      or /watch?other_param&v=
-		$pattern .=     '|/user/.+\#.+/'; #      or like /user/username#p/u/11/
-		$pattern .=     '|/.+\#.+/';      #      or like /sandalsResorts#p/c/54B8C800269D7C1B/0/
-		$pattern .=   ')';                #    End path alternatives.
-		$pattern .= ')';                  #  End host alternatives.
-		$pattern .= '([\w-]{11})';        # 11 characters (Length of Youtube video ids).
-		$pattern .= '(?:.+)?$#x';         # Optional other ending URL parameters.
-		preg_match($pattern, $url, $matches);
-		$result = (isset($matches[1]) ? 'embed/' . $matches[1] : false);
-	}
-
-	// LAST RESORT: If we still have no result, detect the video ID by parsing the URL:
-	if (empty($result))
+	if (preg_match('#(/|/e/|/embed/|/p/|\?list=|\&list=)([\w-]{18})#i', $url, $matches))
 	{
 		parse_str(parse_url(str_replace('&amp;', '&', $url), PHP_URL_QUERY), $out);
-		$result = (isset($out['v']) ? 'embed/' . $out['v'] : false);
+		return ('embed?listType=playlist&list=' . $matches[2] . (isset($out['v']) ? '&v=' . $out['v'] : ''));
 	}
-
-	// Return the resulting string to the caller:
-	return $result;
+	preg_match_all('#(/|/v/|/e/|/embed/|\?v=|\&v=)([\w-]{11})#i', $url, $matches);
+	return (isset($matches[2][count($matches[2]) - 1]) ? 'embed/' . $matches[2][count($matches[2]) - 1] : false);
 }
 
 ?>

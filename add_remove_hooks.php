@@ -21,6 +21,7 @@ if (SMF == 'SSI')
 // Define the hooks
 $hook_functions = array(
 	'integrate_pre_include' => '$sourcedir/Subs-BBCode-YouTube.php',
+	'integrate_load_theme' => 'BBCode_YouTube_LoadTheme',
 	'integrate_bbc_codes' => 'BBCode_YouTube',
 	'integrate_bbc_buttons' => 'BBCode_YouTube_Button',
 );
