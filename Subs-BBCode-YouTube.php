@@ -15,8 +15,8 @@ function BBCode_YouTube(&$bbc)
 		'type' => 'unparsed_content',
 		'content' => '$1',
 		'parameters' => array(
-			'width' => array('value' => ' width="$1"', 'match' => '(\d+)', validate => 'BBCode_youtube_width'),
-			'height' => array('value' => ' height="$1"', 'match' => '(\d+)', validate => 'BBCode_youtube_height'),
+			'width' => array('value' => ' width="$1"', 'match' => '(\d+)', 'validate' => 'BBCode_youtube_width'),
+			'height' => array('value' => ' height="$1"', 'match' => '(\d+)', 'validate' => 'BBCode_youtube_height'),
 		),
 		'validate' => 'BBCode_YouTube_Validate',
 		'disabled_content' => '($1)',
