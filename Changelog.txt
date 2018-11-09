@@ -1,3 +1,8 @@
+v3.9 - January 24th, 2016
+o Added code to make YouTube bbcode recognize content as 34-character playlist.
+o Added code to force aspect ratio of width to height to be 16:9.
+o Modified CSS file so that there isn't a 25px gap at the top of the video.
+
 v3.8 - January 23rd, 2016
 o Modified new YouTube video playlist URLs support for better coverage.
 

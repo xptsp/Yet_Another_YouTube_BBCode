@@ -5,7 +5,7 @@
 	<id>Dougiefresh:YouTube</id>
 	<name>Yet Another YouTube BBCode Tag</name>
 	<type>modification</type>
-	<version>3.8</version>
+	<version>3.9</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
@@ -15,7 +15,7 @@
 		<modification>language.english.xml</modification>
 		<modification>language.english-utf8.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
-		<require-file name="BBCode-YouTube.css" destination="$themedir/css" />
+		<require-file name="BBCode-YouTube2.css" destination="$themedir/css" />
 		<require-file name="youtube.gif" destination="$imagesdir/bbc" />
 	</install>
 	<uninstall for="2.0 - 2.0.99">
@@ -25,7 +25,7 @@
 		<modification reverse="true">language.english.xml</modification>
 		<modification reverse="true">language.english-utf8.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
-		<remove-file name="$themedir/css/BBCode-YouTube.css" />
+		<remove-file name="$themedir/css/BBCode-YouTube2.css" />
 		<remove-file name="$imagesdir/bbc/youtube.gif" />
 	</uninstall>
 
@@ -36,7 +36,7 @@
 		<modification>language.english.xml</modification>
 		<modification>language.english-utf8.xml</modification>
 		<require-file name="Subs-BBCode-YouTube.php" destination="$sourcedir" />
-		<require-file name="BBCode-YouTube.css" destination="$themedir/css" />
+		<require-file name="BBCode-YouTube2.css" destination="$themedir/css" />
 		<require-file name="youtube.png" destination="$imagesdir/bbc" />
 	</install>
 	<uninstall for="2.1 Beta 2">
@@ -45,7 +45,7 @@
 		<modification reverse="true">language.english.xml</modification>
 		<modification reverse="true">language.english-utf8.xml</modification>
 		<remove-file name="$sourcedir/Subs-BBCode-YouTube.php" />
-		<remove-file name="$themedir/css/BBCode-YouTube.css" />
+		<remove-file name="$themedir/css/BBCode-YouTube2.css" />
 		<remove-file name="$imagesdir/bbc/youtube.png" />
 	</uninstall>
 </package-info>

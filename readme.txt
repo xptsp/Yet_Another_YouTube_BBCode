@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v3.8[/b][/size][/color]
+[center][color=red][size=16pt][b]YET ANOTHER YOUTUBE BBCODE TAG v3.9[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=3982]Link to Mod[/url]
 [/center]
 [hr]
@@ -42,7 +42,9 @@ http://www.youtube.com/watch?feature=player_embedded&v=fA4cphzsjn8
 http://www.youtube.com/?feature=player_embedded&v=fA4cphzsjn8[/nobbc]
 
 [b][u]For YouTube PlayLists:[/u][/b]
-[nobbc]http://www.youtube.com/e/PL55713C70BA91BD6E
+[nobbc]PL55713C70BA91BD6E
+PLquckZj9TVRFKWqM6LJI4a_dgvN48jZGk
+http://www.youtube.com/e/PL55713C70BA91BD6E
 http://www.youtube.com/p/PL55713C70BA91BD6E
 http://www.youtube.com/embed/PL55713C70BA91BD6E
 http://www.youtube.com/embed?list=PL55713C70BA91BD6E

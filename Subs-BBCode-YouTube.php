@@ -25,7 +25,7 @@ function BBCode_YouTube_LoadTheme()
 {
 	global $context, $settings;
 	$context['html_headers'] .= '
-	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/BBCode-YouTube.css" />';
+	<link rel="stylesheet" type="text/css" href="' . $settings['default_theme_url'] . '/css/BBCode-YouTube2.css" />';
 	$context['allowed_html_tags'][] = '<iframe>';
 }
 
@@ -237,6 +237,8 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 		$data = $server . '/embed/' . ($url = $data);
 	elseif ($len == 18)
 		$data = $server . '/embed?listType=playlist&list=' . ($url = $data);
+	elseif ($len == 34 && substr($data, 0, 2) == 'PL')
+		$data = $server . '/embed?listType=playlist&list=' . ($url = $data);
 	else
 		$data = $server . '/' . ($url = BBCode_YouTube_Parse($data));
 
@@ -301,13 +303,13 @@ function BBCode_YouTube_Link(&$data)
 {
 	global $context, $modSettings;
 	
-	// Set width or height with respect to aspect ratio if just one is set.  Set both if neither:
-	if (!isset($context['bbc_youtube']['width']) && isset($context['bbc_youtube']['height']))
-		$context['bbc_youtube']['width'] = floor($context['bbc_youtube']['height'] * 1.6);
-	elseif (isset($context['bbc_youtube']['width']) && !isset($context['bbc_youtube']['height']))
-		$context['bbc_youtube']['height'] = floor($context['bbc_youtube']['width'] * 0.625);
+	// If either width or height is not defined, then pull the default values:
 	$width = (isset($context['bbc_youtube']['width']) ? $context['bbc_youtube']['width'] : (!empty($modSettings['youtube_default_width']) ? $modSettings['youtube_default_width'] : 0));
 	$height = (isset($context['bbc_youtube']['height']) ? $context['bbc_youtube']['height'] : (!empty($modSettings['youtube_default_height']) ? $modSettings['youtube_default_height'] : 0));
+
+	// Adjust the video width & height to match a 16:9 ratio:
+	if (!empty($width) && !empty($height) && ($width / $height) != 0.5625)
+		$height = floor($width * 0.5625);
 
 	// Process the rest of the parameters we've saved in the validation functions:
 	if (isset($context['bbc_youtube']['autoplay']))
