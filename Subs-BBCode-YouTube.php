@@ -212,7 +212,7 @@ function BBCode_YouTube_URL(&$tag, &$data, &$disabled)
 	elseif ($len == 18)
 		$data = $server . '/embed?listType=playlist&list=' . ($url = $data);
 	else
-		$data = $server . '/embed/' . ($url = parse_yturl($data));
+		$data = $server . '/' . ($url = parse_yturl($data));
 
 	// If the URL variable is empty, return link invalid to user....
 	if (empty($url))
