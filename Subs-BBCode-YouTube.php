@@ -374,7 +374,16 @@ function BBCode_YouTube_Parse($url)
 		return ('embed?listType=playlist&list=' . $matches[2] . (isset($out['v']) ? '&v=' . $out['v'] : '') . (isset($out['index']) ? '&index=' . $out['index'] : ''));
 	}
 	preg_match_all('#(\?v=|\&anp;v=|/|/v/|/e/|/embed/)([\w-]{11})#i', $url, $matches);
-	return (isset($matches[2][count($matches[2]) - 1]) ? 'embed/' . $matches[2][count($matches[2]) - 1] : false);
+	$rv (isset($matches[2][count($matches[2]) - 1]) ? 'embed/' . $matches[2][count($matches[2]) - 1] : false);
+
+	// parse timestamp attribute
+	if ($rv != false)
+	{
+	        preg_match("#(?:&amp;t=|\?t=)(?:\d+(?:h|m|s)?)+#i", $url, $matches);
+	        $rv .= (isset($matches[0]) ? $matches[0] : '');
+	}
+
+	return $rv;
 }
 
 //=================================================================================
